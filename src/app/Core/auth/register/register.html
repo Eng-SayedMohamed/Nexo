@@ -1,1 +1,259 @@
-<p>register works!</p>
+<div
+  class="w-full max-w-lg bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs mx-auto"
+>
+  <form [formGroup]="register" (ngSubmit)="onSubmit()">
+    <h5 class="text-xl font-semibold text-heading mb-6">Sign up to our platform</h5>
+    <div class="mb-4">
+      <label for="name" class="block mb-2.5 text-sm font-medium text-heading">Your Name</label>
+      <input
+        formControlName="name"
+        type="text"
+        id="name"
+        class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+        placeholder="Your Name"
+      />
+      @if (register.get('name')?.invalid && register.get('name')?.touched) {
+        <div
+          class="flex p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft border border-danger-subtle"
+          role="alert"
+        >
+          <svg
+            class="w-4 h-4 me-2 shrink-0"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+            <span class="font-medium">Ensure that these requirements are met:</span>
+            <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+              @if (register.get('name')?.hasError('required')) {
+                <li>Name is required</li>
+              }
+              @if (
+                register.get('name')?.hasError('minlength') ||
+                register.get('name')?.hasError('maxlength')
+              ) {
+                <li>Name must be between 3 and 20 characters</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+    <div>
+      <label for="email" class="block mb-2.5 text-sm font-medium text-heading">Your email</label>
+      <input
+        formControlName="email"
+        type="email"
+        id="email"
+        class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+        placeholder="example@company.com"
+      />
+      @if (register.get('email')?.invalid && register.get('email')?.touched) {
+        <div
+          class="flex p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft border border-danger-subtle"
+          role="alert"
+        >
+          <svg
+            class="w-4 h-4 me-2 shrink-0"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+            <span class="font-medium">Ensure that these requirements are met:</span>
+            <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+              @if (register.get('email')?.hasError('required')) {
+                <li>Email is required</li>
+              }
+              @if (register.get('email')?.hasError('email')) {
+                <li>Email must be a valid email address</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+    <div>
+      <label for="password" class="block mb-2.5 text-sm font-medium text-heading"
+        >Your password</label
+      >
+      <input
+        formControlName="password"
+        type="password"
+        id="password"
+        class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+        placeholder="•••••••••"
+      />
+      @if (register.get('password')?.invalid && register.get('password')?.touched) {
+        <div
+          class="flex p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft border border-danger-subtle"
+          role="alert"
+        >
+          <svg
+            class="w-4 h-4 me-2 shrink-0"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+            <span class="font-medium">Ensure that these requirements are met:</span>
+            <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+              @if (register.get('password')?.hasError('required')) {
+                <li>Password is required</li>
+              }
+              @if (
+                register.get('password')?.hasError('minlength') ||
+                register.get('password')?.hasError('maxlength')
+              ) {
+                <li>Password must be between 6 and 20 characters</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+    <div>
+      <label for="repassword" class="block mb-2.5 text-sm font-medium text-heading"
+        >Confirm password</label
+      >
+      <input
+        formControlName="rePassword"
+        type="password"
+        id="repassword"
+        class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+        placeholder="•••••••••"
+      />
+      @if (register.getError('mismatch') && register.get('rePassword')?.touched) {
+        <div
+          class="flex p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft border border-danger-subtle"
+          role="alert"
+        >
+          <svg
+            class="w-4 h-4 me-2 shrink-0"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+            <span class="font-medium">Ensure that these requirements are met:</span>
+            <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+              @if (register.get('rePassword')?.hasError('required')) {
+                <li>Confirm password is required</li>
+              }
+              @if (register.hasError('mismatch')) {
+                <li>Passwords must match</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="mb-6">
+      <label for="phone" class="block mb-2.5 text-sm font-medium text-heading">Phone</label>
+      <input
+        formControlName="phone"
+        type="tel"
+        id="phone"
+        class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+        placeholder="•••••••••"
+      />
+      @if (register.get('phone')?.invalid && register.get('phone')?.touched) {
+        <div
+          class="flex p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft border border-danger-subtle"
+          role="alert"
+        >
+          <svg
+            class="w-4 h-4 me-2 shrink-0"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+            <span class="font-medium">Ensure that these requirements are met:</span>
+            <ul class="mt-2 list-disc list-outside space-y-1 ps-2.5">
+              @if (register.get('phone')?.hasError('required')) {
+                <li>Phone is required</li>
+              }
+              @if (register.get('phone')?.hasError('pattern')) {
+                <li>Phone must be a Egyptian phone number</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+
+    <button
+      [disabled]="register.invalid"
+      type="submit"
+      class="text-white disabled:bg-gray-700 bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none w-full mb-3"
+    >
+      Sign up new account
+    </button>
+    <div class="text-sm font-medium text-body">
+      Do you have Account? <a routerLink="/login" class="text-fg-brand hover:underline">Login</a>
+    </div>
+  </form>
+</div>
+<hlm-toaster />

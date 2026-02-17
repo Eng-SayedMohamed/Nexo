@@ -1,11 +1,6 @@
 import { Routes } from '@angular/router';
-import { Auth } from './Layout/auth/auth';
 import { Blank } from './Layout/blank/blank';
-import { Home } from './Pages/home/home';
-import { Details } from './Pages/details/details';
-import { Cart } from './Pages/cart/cart';
-import { Login } from './Core/auth/login/login';
-import { Register } from './Core/auth/register/register';
+import { Auth } from './Layout/auth/auth';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -13,17 +8,52 @@ export const routes: Routes = [
     path: '',
     component: Blank,
     children: [
-      { path: 'home', component: Home, title: 'Nexo - Home' },
-      { path: 'details', component: Details, title: 'Nexo - About Prdouct' },
-      { path: 'cart', component: Cart, title: 'Nexo - Cart' },
+      {
+        path: 'home',
+        loadComponent: () => import('./Pages/home/home').then((m) => m.Home),
+        title: 'Nexo - Home',
+      },
+      {
+        path: 'details/:slug/:id',
+        loadComponent: () => import('./Pages/details/details').then((m) => m.Details),
+        title: 'Nexo - About Prdouct',
+      },
+      {
+        path: 'cart',
+        loadComponent: () => import('./Pages/cart/cart').then((m) => m.Cart),
+        title: 'Nexo - Cart',
+      },
+      {
+        path: 'categories',
+        loadComponent: () => import('./Pages/categories/categories').then((m) => m.Categories),
+        title: 'Nexo - Categories',
+      },
+      {
+        path: 'brands',
+        loadComponent: () => import('./Pages/brands/brands').then((m) => m.Brands),
+        title: 'Nexo - Brands',
+      },
+      {
+        path: 'wishlist',
+        loadComponent: () => import('./Pages/wish-list/wish-list').then((m) => m.WishList),
+        title: 'Nexo - Wishlist',
+      },
     ],
   },
   {
     path: '',
     component: Auth,
     children: [
-      { path: 'login', component: Login, title: 'Nexo-Login' },
-      { path: 'register', component: Register, title: 'Nexo-Register' },
+      {
+        path: 'login',
+        loadComponent: () => import('./Core/auth/login/login').then((m) => m.Login),
+        title: 'Nexo-Login',
+      },
+      {
+        path: 'register',
+        loadComponent: () => import('./Core/auth/register/register').then((m) => m.Register),
+        title: 'Nexo-Register',
+      },
     ],
   },
 ];

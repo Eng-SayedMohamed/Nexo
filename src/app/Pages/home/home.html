@@ -1,51 +1,74 @@
-<div
-  class="group relative w-full max-w-sm transition-all duration-500 hover:-translate-y-2 mx-auto"
->
-  <div
-    class="absolute -inset-[2px] rounded-[22px] bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 opacity-70 blur-sm group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"
-  ></div>
-
-  <div
-    class="relative flex flex-col h-full bg-black/90 backdrop-blur-2xl border border-white/10 rounded-[20px] p-6 overflow-hidden"
-  >
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+  @for (item of Products(); track $index) {
     <div
-      class="absolute inset-0 pointer-events-none opacity-20 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%]"
-    ></div>
-
-    <div
-      class="relative w-full h-44 mb-6 rounded-lg bg-zinc-900 border border-white/5 flex items-center justify-center group-hover:border-cyan-500/30 transition-all overflow-hidden"
+      class="w-full max-w-sm bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs"
     >
-      <span class="text-zinc-600 font-mono tracking-[0.3em] uppercase text-xs">Cat</span>
-      <div
-        class="absolute top-3 right-3 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee] animate-pulse"
-      ></div>
-    </div>
-
-    <div class="z-10 relative">
-      <h3
-        class="text-2xl font-black italic tracking-tighter text-white uppercase group-hover:text-cyan-400 transition-colors"
-      >
-        Title
-      </h3>
-      <p class="mt-3 text-sm text-zinc-400 leading-relaxed font-light min-h-[3rem]">Desc</p>
-    </div>
-
-    <div class="mt-8 flex items-center justify-between z-10">
-      <div class="flex flex-col">
-        <span class="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-bold">Credits</span>
-        <span class="text-xl font-mono text-pink-500 drop-shadow-[0_0_8px_#ec4899]">Price</span>
+      <a [routerLink]="['/details', item.slug, item.id]">
+        <img class="rounded-base mb-6" [src]="item.imageCover" alt="product image" />
+      </a>
+      <div>
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="flex items-center space-x-1 rtl:space-x-reverse">
+            @for (ite of [1, 2, 3, 4, 5].slice(0, item.ratingsAverage); track $index) {
+              <svg
+                class="w-5 h-5 text-fg-yellow"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z"
+                />
+              </svg>
+            }
+          </div>
+          <span
+            class="bg-brand-softer border border-brand-subtle text-fg-brand-strong text-xs font-medium px-1.5 py-0.5 rounded-sm"
+            >{{ item.ratingsAverage }} out of 5</span
+          >
+        </div>
+        <a [routerLink]="['/details', item.slug, item.id]">
+          <h5 class="text-xl text-heading font-semibold tracking-tight">
+            {{ item.title.split(' ').slice(0, 3).join(' ') }}
+          </h5>
+        </a>
+        <div class="flex items-center justify-between mt-6">
+          <span class="text-3xl font-extrabold text-heading">${{ item.price }}</span>
+          <button
+            type="button"
+            class="inline-flex items-center text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-3 py-2 focus:outline-none"
+          >
+            <svg
+              class="w-4 h-4 me-1.5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"
+              />
+            </svg>
+            Add to cart
+          </button>
+        </div>
       </div>
-
-      <button
-        class="relative px-6 py-2 group/btn overflow-hidden transition-transform active:scale-95"
-      >
-        <div
-          class="absolute inset-0 bg-cyan-500 skew-x-[-12deg] group-hover/btn:bg-cyan-400 group-hover/btn:shadow-[0_0_20px_#22d3ee] transition-all"
-        ></div>
-        <span class="relative text-black font-black uppercase tracking-tighter italic text-sm"
-          >Initialize</span
-        >
-      </button>
     </div>
-  </div>
+  }
+  <div
+    class="container"
+    infiniteScroll
+    [infiniteScrollDistance]="100"
+    [infiniteScrollThrottle]="500"
+    (scrolled)="onScroll()"
+  ></div>
 </div>
