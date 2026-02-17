@@ -1,5 +1,5 @@
 import { Theme } from './../../../../../node_modules/ngx-sonner/lib/types.d';
-import { Component } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -7,10 +7,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { toast } from 'ngx-sonner';
 import { HlmToasterImports } from '@spartan-ng/helm/sonner';
 import { validators } from 'tailwind-merge';
+import { Auth } from '../../Services/Auth/auth';
 @Component({
   selector: 'app-register',
   imports: [RouterLink, ReactiveFormsModule, HlmToasterImports],
@@ -18,7 +19,9 @@ import { validators } from 'tailwind-merge';
   styleUrl: './register.css',
 })
 export class Register {
-  value!: string;
+  private readonly auth = inject(Auth);
+  private readonly router = inject(Router);
+  isLoading: boolean = false;
   register: FormGroup = new FormGroup(
     {
       name: new FormControl(null, [
@@ -41,12 +44,34 @@ export class Register {
     { validators: this.confirmPassword },
   );
   onSubmit() {
-    console.log(this.register);
-    toast.success('Registration successful!', {
-      description: 'You have successfully registered.',
-      duration: 3000,
-      closeButton: true,
-    });
+    if (this.register.valid) {
+      this.isLoading = true;
+      this.auth.signUp(this.register.value).subscribe({
+        next: (res) => {
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 1000);
+          this.isLoading = false;
+          console.log(res);
+          if (res.message === 'success') {
+            toast.success('Registration successful!', {
+              description: 'You have successfully registered.',
+              duration: 3000,
+              closeButton: true,
+            });
+          }
+        },
+        error: (err) => {
+          this.isLoading = false;
+          console.log(err);
+          toast.error('Registration failed!', {
+            description: err.error.message,
+            duration: 3000,
+            closeButton: true,
+          });
+        },
+      });
+    }
   }
   confirmPassword(g: AbstractControl) {
     return g.get('password')?.value === g.get('rePassword')?.value ? null : { mismatch: true };
