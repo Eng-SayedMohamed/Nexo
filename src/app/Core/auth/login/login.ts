@@ -26,6 +26,7 @@ export class Login {
           this.isLoading = false;
           console.log(res);
           if (res.message === 'success') {
+            localStorage.setItem('token', res.token);
             toast.success('Login successful!', {
               description: 'You have successfully logged in.',
               duration: 3000,
@@ -34,7 +35,6 @@ export class Login {
             setTimeout(() => {
               this.router.navigate(['/home']);
             }, 1000);
-            localStorage.setItem('token', res.token);
           }
         },
         error: (err) => {
