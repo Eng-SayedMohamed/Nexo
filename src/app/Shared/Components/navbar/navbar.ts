@@ -1,9 +1,19 @@
-import { Component, inject, Input, input, OnInit, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  input,
+  OnInit,
+  PLATFORM_ID,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { FlowbiteService } from '../../../Core/Services/Flowbite/flowbite';
 import { initFlowbite } from 'flowbite';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { isPlatformBrowser } from '@angular/common';
+import { IUserInfo } from '../../interfaces/iuser-info';
 
 @Component({
   selector: 'app-navbar',
@@ -15,6 +25,8 @@ export class Navbar implements OnInit {
   @Input({ required: true }) isLogin!: boolean;
   constructor(private flowbiteService: FlowbiteService) {}
   private readonly pLATFORM_ID = inject(PLATFORM_ID);
+  private readonly router = inject(Router);
+  Userinfo: WritableSignal<IUserInfo> = signal({} as IUserInfo);
   ngOnInit(): void {
     this.flowbiteService.loadFlowbite((flowbite) => {
       initFlowbite();
@@ -22,7 +34,12 @@ export class Navbar implements OnInit {
     if (isPlatformBrowser(this.pLATFORM_ID)) {
       if (localStorage.getItem('token') !== null) {
         console.log(jwtDecode(localStorage.getItem('token')!));
+        this.Userinfo.set(jwtDecode(localStorage.getItem('token')!));
       }
     }
+  }
+  signOut() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }

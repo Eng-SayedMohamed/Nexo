@@ -6,7 +6,7 @@ import { Home } from './Pages/home/home';
 import { loggedGuard } from './Core/Guards/logged/logged-guard';
 
 export const routes: Routes = [
-  // { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: '',
     component: Auth,
@@ -31,7 +31,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'home',
-        component: Home,
+        loadComponent: () => import('./Pages/home/home').then((m) => m.Home),
         title: 'Nexo - Home',
       },
       {
