@@ -22,6 +22,11 @@ export const routes: Routes = [
         loadComponent: () => import('./Core/auth/register/register').then((m) => m.Register),
         title: 'Nexo-Register',
       },
+      {
+        path: 'forgot',
+        loadComponent: () => import('./Core/auth/forgot/forgot').then((m) => m.Forgot),
+        title: 'Nexo-Forgot Password',
+      },
     ],
   },
   {

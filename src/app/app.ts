@@ -3,10 +3,10 @@ import { RouterOutlet } from '@angular/router';
 import { initFlowbite } from 'flowbite';
 import { FlowbiteService } from './Core/Services/Flowbite/flowbite';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
-
+import { HlmToasterImports } from '@spartan-ng/helm/sonner';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LoadingBarModule],
+  imports: [RouterOutlet, LoadingBarModule, HlmToasterImports],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

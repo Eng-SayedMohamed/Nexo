@@ -18,6 +18,12 @@
       ],
       "@spartan-ng/helm/utils": [
         "./libs/ui/utils/src/index.ts"
+      ],
+      "@spartan-ng/helm/input-otp": [
+        "./libs/ui/input-otp/src/index.ts"
+      ],
+      "@spartan-ng/helm/icon": [
+        "./libs/ui/icon/src/index.ts"
       ]
     }
   },

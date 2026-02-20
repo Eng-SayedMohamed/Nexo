@@ -1,1 +1,117 @@
-
+<div class="container mx-auto px-4 py-8">
+  <ol class="flex items-center w-full text-sm font-medium text-center text-body sm:text-base">
+    <li
+      [class.text-fg-brand]="step() === 1"
+      class="flex md:w-full items-center sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-default after:border-px after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10"
+    >
+      <span
+        class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-fg-disabled"
+      >
+        <svg
+          class="w-5 h-5 me-1.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+          />
+        </svg>
+        Email <span class="hidden sm:inline-flex sm:ms-2">Verify</span>
+      </span>
+    </li>
+    <li
+      [class.text-fg-brand]="step() === 2"
+      class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-default after:border-px after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10"
+    >
+      <span
+        class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-fg-disabled"
+      >
+        <span class="me-2">2</span>
+        Code <span class="hidden sm:inline-flex sm:ms-2">Verify</span>
+      </span>
+    </li>
+    <li class="flex items-center" [class.text-fg-brand]="step() === 3">
+      <span class="me-2">3</span>
+      Set New Password
+    </li>
+  </ol>
+  @if (step() === 1) {
+    <form [formGroup]="verifyEmail" (ngSubmit)="step1()">
+      <div class="my-4 mx-auto max-w-6xl">
+        <label for="email" class="block text-sm font-medium text-fg-default mb-1">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="w-full px-3 py-2 border border-default rounded-md focus:outline-none focus:ring-2 focus:ring-fg-brand"
+        />
+        <button
+          type="submit"
+          class="text-white bg-brand box-border border border-transparent mt-5 hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  }
+  @if (step() === 2) {
+    <form [formGroup]="verifyCode" (ngSubmit)="step2()">
+      <div class="my-4 mx-auto max-w-6xl">
+        <label for="code" class="block text-sm font-medium text-fg-default mb-1">Reset Code</label>
+        <input
+          type="text"
+          id="code"
+          formControlName="resetCode"
+          class="w-full px-3 py-2 border border-default rounded-md focus:outline-none focus:ring-2 focus:ring-fg-brand"
+        />
+        <button
+          type="submit"
+          class="text-white bg-brand box-border border border-transparent mt-5 hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  }
+  @if (step() === 3) {
+    <form [formGroup]="resetPassword" (ngSubmit)="step3()">
+      <div class="my-4 mx-auto max-w-6xl">
+        <div>
+          <label for="email" class="block text-sm font-medium text-fg-default mb-1">Email</label>
+          <input
+            [value]="email()"
+            type="email"
+            id="email"
+            formControlName="email"
+            class="w-full px-3 py-2 border border-default rounded-md focus:outline-none focus:ring-2 focus:ring-fg-brand"
+          />
+        </div>
+        <div>
+          <label for="newPassword" class="block text-sm font-medium text-fg-default mb-1"
+            >New Password</label
+          >
+          <input
+            type="password"
+            id="newPassword"
+            formControlName="newPassword"
+            class="w-full px-3 py-2 border border-default rounded-md focus:outline-none focus:ring-2 focus:ring-fg-brand"
+          />
+        </div>
+        <button
+          type="submit"
+          class="text-white bg-brand box-border border border-transparent mt-5 hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  }
+</div>
