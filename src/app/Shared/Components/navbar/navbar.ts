@@ -14,6 +14,7 @@ import { Router, RouterLink } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { isPlatformBrowser } from '@angular/common';
 import { IUserInfo } from '../../interfaces/iuser-info';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-navbar',
@@ -26,20 +27,20 @@ export class Navbar implements OnInit {
   constructor(private flowbiteService: FlowbiteService) {}
   private readonly pLATFORM_ID = inject(PLATFORM_ID);
   private readonly router = inject(Router);
+  private readonly cookieService = inject(CookieService);
   Userinfo: WritableSignal<IUserInfo> = signal({} as IUserInfo);
   ngOnInit(): void {
     this.flowbiteService.loadFlowbite((flowbite) => {
       initFlowbite();
     });
     if (isPlatformBrowser(this.pLATFORM_ID)) {
-      if (localStorage.getItem('token') !== null) {
-        console.log(jwtDecode(localStorage.getItem('token')!));
-        this.Userinfo.set(jwtDecode(localStorage.getItem('token')!));
+      if (this.cookieService.check('token')) {
+        this.Userinfo.set(jwtDecode(this.cookieService.get('token')));
       }
     }
   }
   signOut() {
-    localStorage.removeItem('token');
+    this.cookieService.delete('token');
     this.router.navigate(['/login']);
   }
 }

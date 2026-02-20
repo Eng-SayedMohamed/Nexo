@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { toast } from 'ngx-sonner';
 import { Auth } from '../../Services/Auth/auth';
 import { HlmToasterImports } from '@spartan-ng/helm/sonner';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-login',
   imports: [RouterLink, ReactiveFormsModule, HlmToasterImports],
@@ -13,7 +14,10 @@ import { HlmToasterImports } from '@spartan-ng/helm/sonner';
 export class Login {
   private readonly auth = inject(Auth);
   private readonly router = inject(Router);
+  private readonly cookieService = inject(CookieService);
   isLoading: boolean = false;
+  flaq: WritableSignal<boolean> = signal(false);
+
   logIn: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required]),
@@ -26,7 +30,7 @@ export class Login {
           this.isLoading = false;
           console.log(res);
           if (res.message === 'success') {
-            localStorage.setItem('token', res.token);
+            this.cookieService.set('token', res.token);
             toast.success('Login successful!', {
               description: 'You have successfully logged in.',
               duration: 3000,

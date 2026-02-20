@@ -22,6 +22,7 @@ export class Register {
   private readonly auth = inject(Auth);
   private readonly router = inject(Router);
   isLoading: boolean = false;
+  flaq: WritableSignal<boolean> = signal(false);
   register: FormGroup = new FormGroup(
     {
       name: new FormControl(null, [

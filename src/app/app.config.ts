@@ -12,6 +12,7 @@ import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
+import { CookieService } from 'ngx-cookie-service';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -22,7 +23,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
-    importProvidersFrom(LoadingBarHttpClientModule, LoadingBarModule),
+    importProvidersFrom(LoadingBarHttpClientModule, LoadingBarModule, CookieService),
     providePrimeNG({
       theme: {
         preset: Aura,

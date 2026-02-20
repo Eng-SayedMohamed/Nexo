@@ -3,6 +3,8 @@ import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { Auth } from '../../Services/Auth/auth';
 import { HlmToasterImports } from '@spartan-ng/helm/sonner';
 import { toast } from 'ngx-sonner';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-forgot',
   imports: [ReactiveFormsModule, HlmToasterImports],
@@ -12,8 +14,11 @@ import { toast } from 'ngx-sonner';
 export class Forgot {
   private readonly fb = inject(FormBuilder);
   private readonly auth = inject(Auth);
+  private readonly cookieService = inject(CookieService);
+  private readonly Router = inject(Router);
   step: WritableSignal<number> = signal(1);
   email: WritableSignal<string> = signal('');
+  flaq: WritableSignal<boolean> = signal(false);
   verifyEmail: FormGroup = this.fb.group({
     email: [null, [Validators.required, Validators.email]],
   });
@@ -76,7 +81,13 @@ export class Forgot {
         next: (res) => {
           console.log(res);
           if (res.status === 'Success') {
-            this.step.set(4);
+            this.cookieService.set('token', res.token);
+            toast.success(res.message, {
+              description: 'Password reset successful. Redirecting to Home Page.',
+            });
+            setTimeout(() => {
+              this.Router.navigate(['/home']);
+            }, 1000);
           }
         },
         error: (err) => {
@@ -86,7 +97,6 @@ export class Forgot {
           });
         },
       });
-      console.log(this.resetPassword.value);
     }
   }
 }
