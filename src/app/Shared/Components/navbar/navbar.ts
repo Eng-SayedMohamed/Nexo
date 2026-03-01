@@ -33,10 +33,8 @@ export class Navbar implements OnInit {
     this.flowbiteService.loadFlowbite((flowbite) => {
       initFlowbite();
     });
-    if (isPlatformBrowser(this.pLATFORM_ID)) {
-      if (this.cookieService.check('token')) {
-        this.Userinfo.set(jwtDecode(this.cookieService.get('token')));
-      }
+    if (this.cookieService.get('token') !== null) {
+      this.Userinfo.set(jwtDecode(this.cookieService.get('token')!));
     }
   }
   signOut() {

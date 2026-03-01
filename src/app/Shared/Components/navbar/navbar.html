@@ -6,8 +6,25 @@
         >Nexo Store</span
       >
     </a>
-    <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+    <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-x-3">
       @if (isLogin) {
+        <button routerLink="/cart" class="cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+            >
+              <circle cx="9.549" cy="19.049" r="1.701" />
+              <circle cx="16.96" cy="19.049" r="1.701" />
+              <path
+                d="m5.606 5.555l2.01 6.364c.309.978.463 1.467.76 1.829c.26.32.599.567.982.72c.435.173.947.173 1.973.173h3.855c1.026 0 1.538 0 1.972-.173c.384-.153.722-.4.983-.72c.296-.362.45-.851.76-1.829l.409-1.296l.24-.766l.331-1.05a2.5 2.5 0 0 0-2.384-3.252zm0 0l-.011-.037a7 7 0 0 0-.14-.42a2.92 2.92 0 0 0-2.512-1.84C2.84 3.25 2.727 3.25 2.5 3.25"
+              />
+            </g>
+          </svg>
+        </button>
         <button
           type="button"
           class="flex text-sm bg-neutral-primary rounded-full md:me-0 focus:ring-4 focus:ring-neutral-tertiary"
@@ -43,6 +60,32 @@
             <span class="block text-body truncate">{{ Userinfo().role }}</span>
           </div>
           <ul class="p-2 text-sm text-body font-medium" aria-labelledby="user-menu-button">
+            <li>
+              <a
+                href="#"
+                class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
+                >Settings</a
+              >
+            </li>
+
+            <li>
+              <a
+                (click)="signOut()"
+                class="inline-flex items-center cursor-pointer w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
+                >Sign out</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div
+          class="z-50 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44"
+          id="user-dropdown"
+        >
+          <div class="px-4 py-3 text-sm border-b border-default">
+            <span class="block text-heading font-medium"> {{ Userinfo().name }} </span>
+            <span class="block text-body truncate">{{ Userinfo().role }}</span>
+          </div>
+          <ul class="p-2 text-sm text-body font-medium" aria-labelledby="cart-drop-down">
             <li>
               <a
                 href="#"

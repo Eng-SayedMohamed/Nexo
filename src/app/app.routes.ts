@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { Blank } from './Layout/blank/blank';
 import { Auth } from './Layout/auth/auth';
 import { authGuard } from './Core/Guards/Auth/auth-guard';
-import { Home } from './Pages/home/home';
+
 import { loggedGuard } from './Core/Guards/logged/logged-guard';
 
 export const routes: Routes = [
@@ -65,11 +65,18 @@ export const routes: Routes = [
         loadComponent: () => import('./Pages/wish-list/wish-list').then((m) => m.WishList),
         title: 'Nexo - Wishlist',
       },
+
       {
-        path: '**',
-        loadComponent: () => import('./Pages/notfound/notfound').then((m) => m.Notfound),
-        title: 'Nexo - Not Found',
+        path: 'products/:id',
+        loadComponent: () =>
+          import('./Pages/spec-products/spec-products').then((m) => m.SpecProducts),
+        title: 'Nexo - Products',
       },
     ],
+  },
+  {
+    path: '**',
+    loadComponent: () => import('./Pages/notfound/notfound').then((m) => m.Notfound),
+    title: 'Nexo - Not Found',
   },
 ];

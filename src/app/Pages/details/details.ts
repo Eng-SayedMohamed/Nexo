@@ -1,7 +1,9 @@
 import { Product } from './../../Core/Services/Product/product';
-import { Component, Inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, inject, Inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ISpecProduct } from '../../Shared/interfaces/ispec-product';
+import { CartS } from '../../Core/Services/Cart/cart-s';
+import { toast } from 'ngx-sonner';
 
 @Component({
   selector: 'app-details',
@@ -10,10 +12,9 @@ import { ISpecProduct } from '../../Shared/interfaces/ispec-product';
   styleUrl: './details.css',
 })
 export class Details implements OnInit {
-  constructor(
-    @Inject(ActivatedRoute) private readonly route: ActivatedRoute,
-    @Inject(Product) private readonly product: Product,
-  ) {}
+  private readonly route = inject(ActivatedRoute);
+  private readonly product = inject(Product);
+  private readonly cartS = inject(CartS);
   id: WritableSignal<string> = signal('');
   specProduct: WritableSignal<ISpecProduct> = signal({} as ISpecProduct);
   counter: WritableSignal<number> = signal(1);
@@ -36,10 +37,18 @@ export class Details implements OnInit {
       },
     });
   }
-  plus() {
-    this.counter.update((value) => value + 1);
-  }
-  minus() {
-    this.counter.update((value) => value - 1);
+  addToCart(id: string) {
+    this.cartS.addToCart(id).subscribe({
+      next: (res) => {
+        console.log(res);
+        if (res.status == 'success') {
+          toast.success('Added successful!', {
+            description: res.message,
+            duration: 3000,
+            closeButton: true,
+          });
+        }
+      },
+    });
   }
 }

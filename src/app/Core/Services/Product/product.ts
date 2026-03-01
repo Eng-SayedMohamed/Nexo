@@ -13,4 +13,12 @@ export class Product {
   getSpecProduct(id: string): Observable<any> {
     return this.httpClient.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`);
   }
+  getProductsOfBrand(id: string): Observable<any> {
+    return this.httpClient.get(`https://ecommerce.routemisr.com/api/v1/products?brand=${id}`);
+  }
+  getProductsOfCategories(id: string): Observable<any> {
+    return this.httpClient.get(
+      `https://ecommerce.routemisr.com/api/v1/products?category[in]=${id}`,
+    );
+  }
 }

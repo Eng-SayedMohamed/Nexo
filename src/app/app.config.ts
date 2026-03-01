@@ -7,12 +7,13 @@ import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angu
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { CookieService } from 'ngx-cookie-service';
+import { headersInterceptor } from './Core/Interceptors/headers-interceptor';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -22,7 +23,7 @@ export const appConfig: ApplicationConfig = {
       withViewTransitions(),
     ),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch()),
+    provideHttpClient(withFetch(), withInterceptors([headersInterceptor])),
     importProvidersFrom(LoadingBarHttpClientModule, LoadingBarModule, CookieService),
     providePrimeNG({
       theme: {
