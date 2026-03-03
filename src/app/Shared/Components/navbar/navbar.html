@@ -1,15 +1,21 @@
 <nav class="bg-neutral-primary relative w-full z-20 top-0 start-0 border-b border-default">
   <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a routerLink="/home" class="flex items-center space-x-1 rtl:space-x-reverse">
-      <img src="favicon2.ico" class="size-10" alt="Flowbite Logo" />
+      <img src="favicon2.ico" class="size-10" alt="Store Logo" />
       <span class="playwrite self-center text-xl text-heading font-semibold whitespace-nowrap"
         >Nexo Store</span
       >
     </a>
     <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-x-3">
       @if (isLogin) {
-        <button routerLink="/cart" class="cursor-pointer">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <button routerLink="/cart" class="cursor-pointer relative group">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            class="text-heading group-hover:text-brand transition-colors"
+          >
             <g
               fill="none"
               stroke="currentColor"
@@ -20,10 +26,16 @@
               <circle cx="9.549" cy="19.049" r="1.701" />
               <circle cx="16.96" cy="19.049" r="1.701" />
               <path
-                d="m5.606 5.555l2.01 6.364c.309.978.463 1.467.76 1.829c.26.32.599.567.982.72c.435.173.947.173 1.973.173h3.855c1.026 0 1.538 0 1.972-.173c.384-.153.722-.4.983-.72c.296-.362.45-.851.76-1.829l.409-1.296l.24-.766l.331-1.05a2.5 2.5 0 0 0-2.384-3.252zm0 0l-.011-.037a7 7 0 0 0-.14-.42a2.92 2.92 0 0 0-2.512-1.84C2.84 3.25 2.727 3.25 2.5 3.25"
+                d="m5.606 5.555l2.01 6.364c.309.978.463 1.467.76 1.829c.26.32.599.567.982.72c.435.173.947.173 1.973.173h3.855c1.026 0 1.538 0 1.972-.173c.384-.153.722-.4.983-.72.296-.362.45-.851.76-1.829l.409-1.296l.24-.766l.331-1.05a2.5 2.5 0 0 0-2.384-3.252zm0 0l-.011-.037a7 7 0 0 0-.14-.42a2.92 2.92 0 0 0-2.512-1.84C2.84 3.25 2.727 3.25 2.5 3.25"
               />
             </g>
           </svg>
+
+          <span
+            class="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand text-2xs font-bold text-white shadow-sm"
+          >
+            {{ cartCounter() }}
+          </span>
         </button>
         <button
           type="button"
@@ -180,17 +192,9 @@
         <ul
           class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary"
         >
-          <li></li>
           <li>
             <a
-              routerLink="/home"
-              class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
-              >Home</a
-            >
-          </li>
-
-          <li>
-            <a
+              routerLinkActive="text-fg-brand"
               routerLink="/categories"
               class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >Categories</a
@@ -198,6 +202,7 @@
           </li>
           <li>
             <a
+              routerLinkActive="text-fg-brand"
               routerLink="/brands"
               class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >Brands</a
@@ -205,6 +210,7 @@
           </li>
           <li>
             <a
+              routerLinkActive="text-fg-brand"
               routerLink="/wishlist"
               class="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
               >WishList</a

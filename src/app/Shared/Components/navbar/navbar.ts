@@ -1,24 +1,28 @@
 import {
   Component,
+  computed,
   inject,
   Input,
   input,
   OnInit,
   PLATFORM_ID,
+  Signal,
   signal,
   WritableSignal,
 } from '@angular/core';
 import { FlowbiteService } from '../../../Core/Services/Flowbite/flowbite';
 import { initFlowbite } from 'flowbite';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { isPlatformBrowser } from '@angular/common';
 import { IUserInfo } from '../../interfaces/iuser-info';
 import { CookieService } from 'ngx-cookie-service';
+import { WishListService } from '../../../Core/Services/Wishlist/wish-list';
+import { CartS } from '../../../Core/Services/Cart/cart-s';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
@@ -28,13 +32,20 @@ export class Navbar implements OnInit {
   private readonly pLATFORM_ID = inject(PLATFORM_ID);
   private readonly router = inject(Router);
   private readonly cookieService = inject(CookieService);
+  readonly cartS = inject(CartS);
   Userinfo: WritableSignal<IUserInfo> = signal({} as IUserInfo);
+  cartCounter: Signal<number> = computed(() => this.cartS.counter());
   ngOnInit(): void {
     this.flowbiteService.loadFlowbite((flowbite) => {
       initFlowbite();
     });
-    if (this.cookieService.get('token') !== null) {
-      this.Userinfo.set(jwtDecode(this.cookieService.get('token')!));
+    if (isPlatformBrowser(this.pLATFORM_ID)) {
+      this.cartS.showCart().subscribe((res) => {
+        this.cartS.counter.set(res.numOfCartItems);
+      });
+      if (this.cookieService.get('token') !== null) {
+        this.Userinfo.set(jwtDecode(this.cookieService.get('token')!));
+      }
     }
   }
   signOut() {

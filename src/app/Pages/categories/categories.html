@@ -4,7 +4,7 @@
       class="bg-neutral-primary-soft block max-w-sm p-6 border border-default rounded-base shadow-xs"
     >
       <a [routerLink]="['/products', item._id]">
-        <img class="rounded-base size-64 object-fill" [src]="item.image" alt="" />
+        <img class="rounded-base size-64 object-fill" [src]="item.image" [alt]="item.name" />
       </a>
       <a [routerLink]="['/products', item._id]">
         <h5 class="mt-6 mb-2 text-2xl font-semibold tracking-tight text-heading">

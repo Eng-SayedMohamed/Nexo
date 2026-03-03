@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class CartS {
   private readonly httpClient = inject(HttpClient);
   private readonly cookieService = inject(CookieService);
-
+  counter: WritableSignal<number> = signal(0);
   addToCart(id: string): Observable<any> {
     return this.httpClient.post(`https://ecommerce.routemisr.com/api/v1/cart`, {
       productId: id,

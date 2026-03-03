@@ -1,13 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
-/* Tailwind Imports */
 @import 'tailwindcss';
 @import 'tailwindcss-primeui';
-@custom-variant dark (&:where(.dark, .dark *));
-/* Flowbite Blugins */
+@import '../node_modules/primeicons/primeicons.css';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-@import 'flowbite/src/themes/default';
-@plugin "flowbite/plugin";
-@source "../node_modules/flowbite";
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+NZ+Basic:wght@100..400&display=swap');
 .playwrite {
   font-family: 'Playwrite NZ Basic', cursive;
@@ -15,44 +9,10 @@
   font-weight: 600;
   font-style: oblique;
 }
+@import 'flowbite/src/themes/default';
+@source "../node_modules/flowbite";
 @custom-variant dark (&:where(.dark, .dark *));
-/* 1. تحديد مدة وتوقيت الأنيميشن لكل العناصر */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 500ms;
-  animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
-  animation-fill-mode: both;
-}
-
-::view-transition-old(root) {
-  animation-name: slide-and-fade-out;
-}
-
-::view-transition-new(root) {
-  animation-name: slide-and-fade-in;
-}
-
-@keyframes slide-and-fade-out {
-  from {
-    opacity: 1;
-    transform: translateY(0px) scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-30px) scale(0.95); /* بتطلع لفوق وتصغر شوية */
-  }
-}
-
-@keyframes slide-and-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(1.05); /* بتبدأ من تحت وتكون كبيرة شوية */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0px) scale(1);
-  }
-}
+@plugin "flowbite/plugin";
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);

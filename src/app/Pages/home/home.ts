@@ -1,20 +1,21 @@
-import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, inject, OnInit, PLATFORM_ID, signal, WritableSignal } from '@angular/core';
 import { Product } from '../../Core/Services/Product/product';
 import { IProduct } from '../../Shared/interfaces/product';
 import { RouterLink } from '@angular/router';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
-import { ButtonModule } from 'primeng/button';
-import { CarouselModule } from 'primeng/carousel';
-import { TagModule } from 'primeng/tag';
 import { ICategory } from '../../Shared/interfaces/icategory';
 import { Category } from '../../Core/Services/Categories/categories';
 import { CartS } from '../../Core/Services/Cart/cart-s';
 import { toast } from 'ngx-sonner';
-import { WishList } from '../../Core/Services/Wishlist/wish-list';
+import { WishListService } from '../../Core/Services/Wishlist/wish-list';
+import { isPlatformBrowser } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
+import { CarouselModule } from 'primeng/carousel';
+import { TagModule } from 'primeng/tag';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, InfiniteScrollDirective],
+  imports: [RouterLink, InfiniteScrollDirective, ButtonModule, CarouselModule, TagModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -22,7 +23,8 @@ export class Home implements OnInit {
   private readonly productService = inject(Product);
   private readonly categoriesService = inject(Category);
   private readonly cartS = inject(CartS);
-  private readonly wishList = inject(WishList);
+  private readonly wishList = inject(WishListService);
+  private readonly id = inject(PLATFORM_ID);
   Products: WritableSignal<IProduct[]> = signal([]);
   categories: WritableSignal<ICategory[]> = signal([]);
   currentPage: WritableSignal<number> = signal(1);
@@ -30,11 +32,34 @@ export class Home implements OnInit {
   isEnd: WritableSignal<boolean> = signal(false);
   responsiveOptions: any[] | undefined;
   wishs: WritableSignal<string[]> = signal([]);
-
   ngOnInit(): void {
-    this.getProducts();
-    this.getCategories();
-    this.getWishList();
+    if (isPlatformBrowser(this.id)) {
+      this.getProducts();
+      this.getCategories();
+      this.getWishList();
+    }
+    this.responsiveOptions = [
+      {
+        breakpoint: '1400px',
+        numVisible: 4,
+        numScroll: 1,
+      },
+      {
+        breakpoint: '1199px',
+        numVisible: 3,
+        numScroll: 1,
+      },
+      {
+        breakpoint: '767px',
+        numVisible: 2,
+        numScroll: 1,
+      },
+      {
+        breakpoint: '575px',
+        numVisible: 1,
+        numScroll: 1,
+      },
+    ];
   }
   getCategories() {
     this.categoriesService.getCategories().subscribe({
@@ -94,16 +119,6 @@ export class Home implements OnInit {
       },
     ];
   }
-  getSeverity(status: string): any {
-    switch (status) {
-      case 'INSTOCK':
-        return 'success';
-      case 'LOWSTOCK':
-        return 'warn';
-      case 'OUTOFSTOCK':
-        return 'danger';
-    }
-  }
   addToCart(id: string) {
     this.cartS.addToCart(id).subscribe({
       next: (res) => {
@@ -113,6 +128,7 @@ export class Home implements OnInit {
             duration: 3000,
             closeButton: true,
           });
+          this.cartS.counter.set(res.numOfCartItems);
         }
       },
     });

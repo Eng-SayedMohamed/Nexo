@@ -1,7 +1,7 @@
 <!-- carousel -->
 
 <!-- Static Products -->
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-9">
   @for (item of Products(); track $index) {
     <div
       class="w-full max-w-sm bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs relative group"
@@ -51,7 +51,7 @@
         <img
           class="rounded-base mb-6 transform group-hover:scale-105 transition-transform duration-500"
           [src]="item.imageCover"
-          alt="product image"
+          [alt]="item.title"
         />
       </a>
 

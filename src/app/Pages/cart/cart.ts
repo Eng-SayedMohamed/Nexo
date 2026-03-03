@@ -13,7 +13,7 @@ import { toast } from 'ngx-sonner';
 export class Cart implements OnInit {
   private readonly cartS = inject(CartS);
   private readonly id = inject(PLATFORM_ID);
-  cartDetails: ICart = {} as ICart;
+  cartDetails: WritableSignal<ICart> = signal({} as ICart);
   products: WritableSignal<Product2[]> = signal([]);
   ngOnInit(): void {
     if (isPlatformBrowser(this.id)) {
@@ -24,15 +24,15 @@ export class Cart implements OnInit {
     this.cartS.showCart().subscribe({
       next: (res) => {
         console.log(res);
-        this.cartDetails = res.data;
-        this.products.set(res.data.products);
+        this.cartDetails.set(res.data);
       },
     });
   }
   clear() {
     this.cartS.clear().subscribe((res) => {
       if (res.message == 'success') {
-        this.cartDetails = {} as ICart;
+        this.cartDetails.set({} as ICart);
+        this.cartS.counter.set(0);
         toast.success('Your Shopping Cart Is Now Empty 😊', {
           description: res.message,
           duration: 3000,
@@ -45,7 +45,8 @@ export class Cart implements OnInit {
   delete(id: string) {
     this.cartS.deleteItem(id).subscribe((res) => {
       if ((res.status = 'success')) {
-        this.cartDetails = res.data;
+        this.cartS.counter.set(res.numOfCartItems);
+        this.cartDetails.set(res.data);
         toast.success('Removed successful!', {
           description: res.message,
           duration: 3000,
@@ -58,7 +59,8 @@ export class Cart implements OnInit {
   updateCount(id: string, number: number) {
     this.cartS.updateCount(id, number).subscribe((res) => {
       if ((res.status = 'success')) {
-        this.cartDetails = res.data;
+        this.cartDetails.set(res.data);
+        this.cartS.counter.set(res.numOfCartItems);
         toast.success('Quantity updated successfully😍', {
           description: res.message,
           duration: 3000,

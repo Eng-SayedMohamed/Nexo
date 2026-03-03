@@ -1,9 +1,9 @@
-<div class="container mx-auto p-6 bg-gray-50 min-h-screen">
+<div class="container mx-auto p-6 bg-gray-50 dark:bg-gray-900 min-h-screen">
   <div>
-    <h1 class="text-3xl font-bold mb-8 text-gray-800">Shopping Cart</h1>
-    @if (cartDetails.totalCartPrice == 0) {
+    <h1 class="text-3xl font-bold mb-8 text-gray-800 dark:text-gray-100">Shopping Cart</h1>
+    @if (cartDetails().totalCartPrice !== 0) {
       <button
-        class="ml-6 text-red-500 hover:text-red-700 text-lg font-medium mx-auto"
+        class="ml-6 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 text-lg font-medium mx-auto"
         (click)="clear()"
       >
         Remove All
@@ -12,70 +12,84 @@
   </div>
   <div class="grid grid-cols-1 lg:grid-cols-[70%_minmax(0,1fr)] gap-x-8 gap-y-3">
     <div>
-      @for (item of cartDetails.products; track $index) {
+      @for (item of cartDetails().products; track $index) {
         <div class="lg:col-span-2 space-y-4">
-          <div class="flex items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+          <div
+            class="flex items-center bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700"
+          >
             <img
               src="{{ item.product.imageCover }}"
               alt="Product"
               class="w-24 h-24 rounded-lg object-cover"
             />
             <div class="ml-6 flex-1">
-              <h3 class="font-semibold text-lg text-gray-800">{{ item.product.title }}</h3>
-              <p class="text-gray-500 text-sm">{{ item.product.brand.name }}</p>
+              <h3 class="font-semibold text-lg text-gray-800 dark:text-gray-100">
+                {{ item.product.title }}
+              </h3>
+              <p class="text-gray-500 dark:text-gray-400 text-sm">
+                Brand:{{ item.product.brand.name }}
+              </p>
               <div class="flex items-center mt-4">
                 <button
-                  class="px-2 py-1 border rounded-md hover:bg-gray-100"
+                  class="px-2 py-1 border rounded-md hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-700"
                   (click)="updateCount(item.product._id, item.count - 1)"
                 >
                   -
                 </button>
-                <span class="mx-4 font-medium">{{ item.count }}</span>
+                <span class="mx-4 font-medium dark:text-gray-200">{{ item.count }}</span>
                 <button
-                  class="px-2 py-1 border rounded-md hover:bg-gray-100"
+                  class="px-2 py-1 border rounded-md hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-700"
                   (click)="updateCount(item.product._id, item.count + 1)"
                 >
                   +
                 </button>
                 <button
                   (click)="delete(item.product._id)"
-                  class="ml-6 text-red-500 hover:text-red-700 text-sm font-medium"
+                  class="ml-6 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 text-sm font-medium"
                 >
                   Remove
                 </button>
               </div>
             </div>
             <div class="text-right">
-              <p class="text-xl font-bold text-gray-900">${{ item.price }}</p>
+              <p class="text-xl font-bold text-gray-900 dark:text-gray-100">${{ item.price }}</p>
             </div>
           </div>
         </div>
       } @empty {
-        <p class="text-center m-auto font-medium text-3xl">
+        <p class="text-center m-auto font-medium text-3xl text-gray-800 dark:text-gray-300">
           You have no products in your shopping cart to display.😌
         </p>
       }
     </div>
-    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 h-fit">
-      <h2 class="text-xl font-bold mb-6 border-b pb-4">Order Summary</h2>
-      <div class="space-y-4 text-gray-600">
+    <div
+      class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 h-fit"
+    >
+      <h2
+        class="text-xl font-bold mb-6 border-b border-gray-200 dark:border-gray-600 pb-4 dark:text-gray-100"
+      >
+        Order Summary
+      </h2>
+      <div class="space-y-4 text-gray-600 dark:text-gray-300">
         <div class="flex justify-between">
           <span>Subtotal</span>
-          <span class="font-semibold text-gray-900">${{ cartDetails.totalCartPrice }} </span>
+          <span class="font-semibold text-gray-900 dark:text-gray-100"
+            >${{ cartDetails().totalCartPrice }}
+          </span>
         </div>
         <div class="flex justify-between">
           <span>Shipping</span>
-          <span class="text-green-500 font-medium">Free</span>
+          <span class="text-green-500 dark:text-green-400 font-medium">Free</span>
         </div>
-        <hr />
-        <div class="flex justify-between text-xl font-bold text-gray-900">
+        <hr class="dark:border-gray-600" />
+        <div class="flex justify-between text-xl font-bold text-gray-900 dark:text-gray-100">
           <span>Total</span>
-          <span>${{ cartDetails.totalCartPrice }}</span>
+          <span>${{ cartDetails().totalCartPrice }}</span>
         </div>
       </div>
 
       <button
-        class="w-full mt-8 bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-200"
+        class="w-full mt-8 bg-blue-600 dark:bg-blue-700 text-white py-4 rounded-xl font-bold hover:bg-blue-700 dark:hover:bg-blue-800 transition-all shadow-lg shadow-blue-200 dark:shadow-blue-900"
       >
         Proceed to Checkout
       </button>
@@ -84,10 +98,12 @@
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
           class="h-4"
+          alt="Visa Logo"
         />
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
           class="h-6"
+          alt="Mastercard Logo"
         />
       </div>
     </div>

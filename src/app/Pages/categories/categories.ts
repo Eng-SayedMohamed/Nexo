@@ -20,7 +20,6 @@ export class Categories implements OnInit {
   getCategories() {
     this.category.getCategories().subscribe({
       next: (res) => {
-        console.log(res);
         this.categoriesData.set(res.data);
       },
     });
