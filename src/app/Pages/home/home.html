@@ -1,5 +1,15 @@
 <!-- carousel -->
-
+<owl-carousel-o [options]="customOptions">
+  @for (item of categories(); track $index) {
+    <ng-template carouselSlide
+      ><img
+        [src]="item.image"
+        [alt]="item.name"
+        class="size-70 object-cover"
+        [routerLink]="['/products', item._id]"
+    /></ng-template>
+  }
+</owl-carousel-o>
 <!-- Static Products -->
 <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-9">
   @for (item of Products(); track $index) {

@@ -9,13 +9,12 @@ import { CartS } from '../../Core/Services/Cart/cart-s';
 import { toast } from 'ngx-sonner';
 import { WishListService } from '../../Core/Services/Wishlist/wish-list';
 import { isPlatformBrowser } from '@angular/common';
-import { ButtonModule } from 'primeng/button';
-import { CarouselModule } from 'primeng/carousel';
-import { TagModule } from 'primeng/tag';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, InfiniteScrollDirective, ButtonModule, CarouselModule, TagModule],
+  imports: [RouterLink, InfiniteScrollDirective, CarouselModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -95,30 +94,34 @@ export class Home implements OnInit {
   onScroll() {
     this.getProducts();
   }
-  primeCarusol() {
-    this.responsiveOptions = [
-      {
-        breakpoint: '1400px',
-        numVisible: 2,
-        numScroll: 1,
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1,
       },
-      {
-        breakpoint: '1199px',
-        numVisible: 3,
-        numScroll: 1,
+      400: {
+        items: 2,
       },
-      {
-        breakpoint: '767px',
-        numVisible: 2,
-        numScroll: 1,
+      740: {
+        items: 3,
       },
-      {
-        breakpoint: '575px',
-        numVisible: 1,
-        numScroll: 1,
+      940: {
+        items: 4,
       },
-    ];
-  }
+    },
+    nav: true,
+    stagePadding: 30,
+    autoplay: true,
+    autoplayHoverPause: true,
+    autoplayTimeout: 2000,
+  };
   addToCart(id: string) {
     this.cartS.addToCart(id).subscribe({
       next: (res) => {
