@@ -1,1 +1,56 @@
-<p>setting works!</p>
+<div class="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+  <div class="max-w-md mx-auto p-6">
+    <!-- Title -->
+    <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Settings</h1>
+
+    <!-- Language Section -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-5 mb-6 transition">
+      <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">🌍 Language</h2>
+
+      <div class="flex gap-4">
+        <button
+          (click)="changeLanguage('ar')"
+          [class]="
+            currentLang === 'ar'
+              ? 'bg-blue-600 text-white'
+              : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200'
+          "
+          class="px-4 py-2 rounded-xl transition"
+        >
+          العربية
+        </button>
+
+        <button
+          (click)="changeLanguage('en')"
+          [class]="
+            currentLang === 'en'
+              ? 'bg-blue-600 text-white'
+              : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200'
+          "
+          class="px-4 py-2 rounded-xl transition"
+        >
+          English
+        </button>
+      </div>
+    </div>
+
+    <!-- Theme Section -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-5 transition">
+      <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">🎨 Appearance</h2>
+
+      <div class="flex items-center justify-between">
+        <span class="text-gray-600 dark:text-gray-300"> Dark Mode </span>
+
+        <button
+          (click)="toggleTheme()"
+          class="w-14 h-8 flex items-center bg-gray-300 dark:bg-blue-600 rounded-full p-1 transition"
+        >
+          <div
+            [class]="isDark ? 'translate-x-6 bg-white' : 'translate-x-0 bg-white'"
+            class="w-6 h-6 rounded-full shadow-md transform transition"
+          ></div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

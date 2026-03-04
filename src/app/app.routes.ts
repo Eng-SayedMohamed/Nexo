@@ -72,6 +72,11 @@ export const routes: Routes = [
           import('./Pages/spec-products/spec-products').then((m) => m.SpecProducts),
         title: 'Nexo - Products',
       },
+      {
+        path: 'setting',
+        loadComponent: () => import('./Pages/setting/setting/setting').then((m) => m.Setting),
+        title: 'Nexo - Setting',
+      },
     ],
   },
   {

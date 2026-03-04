@@ -35,17 +35,36 @@ export class Navbar implements OnInit {
   readonly cartS = inject(CartS);
   Userinfo: WritableSignal<IUserInfo> = signal({} as IUserInfo);
   cartCounter: Signal<number> = computed(() => this.cartS.counter());
+  isDarkMode: WritableSignal<boolean> = signal(false);
   ngOnInit(): void {
     this.flowbiteService.loadFlowbite((flowbite) => {
       initFlowbite();
     });
     if (isPlatformBrowser(this.pLATFORM_ID)) {
+      this.chechOntheme();
       this.cartS.showCart().subscribe((res) => {
         this.cartS.counter.set(res.numOfCartItems);
       });
       if (this.cookieService.get('token') !== null) {
         this.Userinfo.set(jwtDecode(this.cookieService.get('token')!));
       }
+    }
+  }
+  toggleDark(evt: any) {
+    if (evt.target.checked == true) {
+      this.isDarkMode.set(true);
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      this.isDarkMode.set(false);
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }
+  chechOntheme() {
+    if (localStorage.getItem('theme') === 'dark') {
+      this.isDarkMode.set(true);
+      document.documentElement.classList.add('dark');
     }
   }
   signOut() {
