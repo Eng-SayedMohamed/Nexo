@@ -99,7 +99,7 @@ export class Home implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
-    dots: true,
+    dots: false,
     navSpeed: 700,
     navText: ['', ''],
     responsive: {
@@ -116,7 +116,7 @@ export class Home implements OnInit {
         items: 4,
       },
     },
-    nav: true,
+    nav: false,
     stagePadding: 30,
     autoplay: true,
     autoplayHoverPause: true,

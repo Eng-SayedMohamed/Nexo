@@ -2,10 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { WishListService } from '../../Core/Services/Wishlist/wish-list';
 import { CartS } from '../../Core/Services/Cart/cart-s';
 import { toast } from 'ngx-sonner';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-wish-list',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './wish-list.html',
   styleUrl: './wish-list.css',
 })
@@ -38,6 +39,7 @@ export class WishList implements OnInit {
   addToCart(id: string): void {
     this.cartS.addToCart(id).subscribe((res) => {
       if (res.status == 'success') {
+        this.cartS.counter.set(res.numOfCartItems);
         toast.success('Added successful!🥳', {
           description: res.message,
           duration: 3000,

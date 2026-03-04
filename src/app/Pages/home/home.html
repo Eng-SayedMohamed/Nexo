@@ -1,16 +1,20 @@
 <!-- carousel -->
-<owl-carousel-o [options]="customOptions">
-  @for (item of categories(); track $index) {
-    <ng-template carouselSlide
-      ><img
-        [src]="item.image"
-        [alt]="item.name"
-        class="size-70 object-cover"
-        [routerLink]="['/products', item._id]"
-    /></ng-template>
-  }
-</owl-carousel-o>
+<div class="hidden sm:block mb-10">
+  <h3 class="text-2xl font-bold text-heading mb-4">Categories</h3>
+  <owl-carousel-o [options]="customOptions">
+    @for (item of categories(); track $index) {
+      <ng-template carouselSlide
+        ><img
+          [src]="item.image"
+          [alt]="item.name"
+          class="sm:size-70 size-30 object-cover p-2 cursor-pointer rounded-base transition-transform duration-300 hover:scale-105"
+          [routerLink]="['/products', item._id]"
+      /></ng-template>
+    }
+  </owl-carousel-o>
+</div>
 <!-- Static Products -->
+<h3 class="text-3xl font-bold text-heading mb-4">Popular Products</h3>
 <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-9">
   @for (item of Products(); track $index) {
     <div
