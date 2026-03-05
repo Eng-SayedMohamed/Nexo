@@ -17,7 +17,7 @@ export class Orders {
   }
   checkOut(id: string, data: object): Observable<any> {
     return this.httpClient.post(
-      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://localhost:4200`,
+      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://https://nexo-sepia.vercel.app/`,
       {
         shippingAddress: data,
       },
