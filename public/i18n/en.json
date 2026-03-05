@@ -10,7 +10,8 @@
     "login": "Login",
     "register": "Register",
     "settings": "Settings",
-    "sign_out": "Sign out"
+    "sign_out": "Sign out",
+    "allorders": "All Orders"
   },
   "cart": {
     "title": "Shopping Cart",

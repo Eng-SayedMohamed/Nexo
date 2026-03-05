@@ -56,7 +56,7 @@ export const routes: Routes = [
         title: 'Nexo - Categories',
       },
       {
-        path: 'order',
+        path: 'allorder',
         loadComponent: () => import('./Pages/order/order').then((m) => m.Order),
         title: 'Nexo - Order',
       },
