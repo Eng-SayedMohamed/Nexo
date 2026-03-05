@@ -4,6 +4,7 @@ import { Auth } from './Layout/auth/auth';
 import { authGuard } from './Core/Guards/Auth/auth-guard';
 
 import { loggedGuard } from './Core/Guards/logged/logged-guard';
+import { Checkout } from './Pages/checkout/checkout';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -66,11 +67,9 @@ export const routes: Routes = [
       },
       {
         path: 'wishlist',
-        canActivate: [authGuard],
         loadComponent: () => import('./Pages/wish-list/wish-list').then((m) => m.WishList),
         title: 'Nexo - Wishlist',
       },
-
       {
         path: 'products/:id',
         loadComponent: () =>
@@ -81,6 +80,11 @@ export const routes: Routes = [
         path: 'setting',
         loadComponent: () => import('./Pages/setting/setting/setting').then((m) => m.Setting),
         title: 'Nexo - Setting',
+      },
+      {
+        path: 'check/:id',
+        loadComponent: () => import('./Pages/checkout/checkout').then((m) => m.Checkout),
+        title: 'Nexo - Checkout',
       },
     ],
   },

@@ -4,10 +4,11 @@ import { ICart, Product2 } from '../../Shared/interfaces/icart';
 import { CurrencyPipe, isPlatformBrowser } from '@angular/common';
 import { toast } from 'ngx-sonner';
 import { TranslatePipe } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, RouterLink],
   templateUrl: './cart.html',
   styleUrl: './cart.css',
 })

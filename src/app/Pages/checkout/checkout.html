@@ -1,0 +1,97 @@
+<div
+  class="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 p-4 transition-colors duration-300"
+>
+  <div
+    class="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-transparent dark:border-gray-700 transition-all"
+  >
+    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">
+      {{ 'checkout.title' | translate }}
+    </h2>
+
+    <form [formGroup]="checkout" class="space-y-5">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{{
+          'checkout.lbl_details' | translate
+        }}</label>
+        <input
+          type="text"
+          formControlName="details"
+          placeholder="{{ 'checkout.ph_details' | translate }}"
+          class="w-full px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{{
+          'checkout.lbl_phone' | translate
+        }}</label>
+        <input
+          type="tel"
+          formControlName="phone"
+          placeholder="{{ 'checkout.ph_phone' | translate }}"
+          class="w-full px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{{
+          'checkout.lbl_city' | translate
+        }}</label>
+        <input
+          type="text"
+          formControlName="city"
+          placeholder="{{ 'checkout.ph_city' | translate }}"
+          class="w-full px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500"
+        />
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 pt-2">
+        <button
+          type="submit"
+          [disabled]="!checkout.valid"
+          (click)="cash()"
+          class="flex-1 flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 disabled:bg-gray-400 dark:disabled:bg-gray-600 text-white font-semibold py-3 rounded-xl transition-all duration-300 shadow-md active:scale-95"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+            />
+          </svg>
+          {{ 'checkout.bt_cash' | translate }}
+        </button>
+
+        <button
+          type="submit"
+          [disabled]="!checkout.valid"
+          (click)="payOnline()"
+          class="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 disabled:bg-gray-400 dark:disabled:bg-gray-600 text-white font-semibold py-3 rounded-xl transition-all duration-300 shadow-md active:scale-95"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+            />
+          </svg>
+          {{ 'checkout.bt_visa' | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

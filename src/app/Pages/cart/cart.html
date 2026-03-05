@@ -93,17 +93,13 @@
       </div>
 
       <button
+        [routerLink]="['/check', cartDetails()._id]"
         class="w-full mt-8 bg-blue-600 dark:bg-blue-700 text-white py-4 rounded-xl font-bold hover:bg-blue-700 dark:hover:bg-blue-800 transition-all shadow-lg shadow-blue-200 dark:shadow-blue-900"
       >
         {{ 'cart.checkout' | translate }}
       </button>
 
       <div class="mt-6 flex items-center justify-center gap-2">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
-          class="h-4"
-          alt="Visa Logo"
-        />
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
           class="h-6"

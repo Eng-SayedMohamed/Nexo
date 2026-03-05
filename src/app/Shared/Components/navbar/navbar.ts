@@ -6,6 +6,7 @@ import {
   input,
   OnInit,
   PLATFORM_ID,
+  Renderer2,
   Signal,
   signal,
   WritableSignal,
@@ -33,6 +34,7 @@ export class Navbar implements OnInit {
   private readonly pLATFORM_ID = inject(PLATFORM_ID);
   private readonly router = inject(Router);
   private readonly cookieService = inject(CookieService);
+  private readonly renderer2 = inject(Renderer2);
   readonly cartS = inject(CartS);
   Userinfo: WritableSignal<IUserInfo> = signal({} as IUserInfo);
   cartCounter: Signal<number> = computed(() => this.cartS.counter());
@@ -42,7 +44,7 @@ export class Navbar implements OnInit {
       initFlowbite();
     });
     if (isPlatformBrowser(this.pLATFORM_ID)) {
-      this.chechOntheme();
+      this.checkOntheme();
       this.cartS.showCart().subscribe((res) => {
         this.cartS.counter.set(res.numOfCartItems);
       });
@@ -62,10 +64,10 @@ export class Navbar implements OnInit {
       localStorage.setItem('theme', 'light');
     }
   }
-  chechOntheme() {
+  checkOntheme() {
     if (localStorage.getItem('theme') === 'dark') {
       this.isDarkMode.set(true);
-      document.documentElement.classList.add('dark');
+      this.renderer2.addClass(document.documentElement, 'dark');
     }
   }
   signOut() {

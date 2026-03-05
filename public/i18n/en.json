@@ -148,5 +148,16 @@
     "remove": "Remove from Wishlist",
     "brand": "Brand"
   },
-  "showPassword": "Show & Hide Password"
+  "showPassword": "Show & Hide Password",
+  "checkout": {
+    "title": "Basic Information",
+    "lbl_details": "Details",
+    "ph_details": "Enter your details",
+    "lbl_phone": "Phone",
+    "ph_phone": "01xxxxxxxxx",
+    "lbl_city": "City",
+    "ph_city": "Enter your city",
+    "bt_cash": "Cash",
+    "bt_visa": "Visa"
+  }
 }
