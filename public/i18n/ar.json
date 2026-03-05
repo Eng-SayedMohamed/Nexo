@@ -1,0 +1,154 @@
+{
+  "app": {
+    "name": "متجر نكسو"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "categories": "الأقسام",
+    "brands": "الماركات",
+    "wishlist": "الرغبات",
+    "cart": "السلة",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "settings": "الإعدادات",
+    "sign_out": "تسجيل الخروج"
+  },
+  "cart": {
+    "title": "سلة التسوق",
+    "remove_all": "إزالة الكل",
+    "empty_message": "لا توجد منتجات في سلة التسوق لعرضها.",
+    "brand": "العلامة التجارية",
+    "remove": "إزالة",
+    "order_summary": "ملخص الطلب",
+    "subtotal": "المجموع الفرعي",
+    "shipping": "الشحن",
+    "free": "مجاني",
+    "total": "الإجمالي",
+    "checkout": "إتمام الشراء"
+  },
+  "home": {
+    "categories": "التصنيفات",
+    "popular_products": "المنتجات الأكثر شهرة",
+    "add_to_cart": "أضف إلى السلة",
+    "out_of": "من"
+  },
+  "auth": {
+    "login": {
+      "title": "تسجيل الدخول إلى المنصة",
+      "email": {
+        "label": "البريد الإلكتروني",
+        "placeholder": "example@company.com",
+        "required": "البريد الإلكتروني مطلوب"
+      },
+      "password": {
+        "label": "كلمة المرور",
+        "placeholder": "•••••••••",
+        "required": "كلمة المرور مطلوبة"
+      },
+      "validation": {
+        "title": "تأكد من استيفاء المتطلبات التالية:"
+      },
+      "remember": "تذكرني",
+      "forgot_password": "هل نسيت كلمة المرور؟",
+      "submit": "تسجيل الدخول إلى حسابك",
+      "not_registered": "ليس لديك حساب؟",
+      "create_account": "إنشاء حساب"
+    },
+    "reset_password": {
+      "steps": {
+        "email": {
+          "title": "البريد الإلكتروني",
+          "verify": "تأكيد"
+        },
+        "code": {
+          "title": "الرمز",
+          "verify": "تأكيد"
+        },
+        "new_password": "تعيين كلمة مرور جديدة"
+      },
+      "form": {
+        "email": "البريد الإلكتروني",
+        "reset_code": "رمز إعادة التعيين",
+        "new_password": "كلمة المرور الجديدة"
+      },
+      "buttons": {
+        "submit": "إرسال"
+      }
+    },
+    "register": {
+      "title": "إنشاء حساب جديد",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "confirm_password": "تأكيد كلمة المرور",
+      "phone": "رقم الهاتف",
+      "submit": "إنشاء حساب",
+      "have_account": "هل لديك حساب؟",
+      "login": "تسجيل الدخول",
+
+      "validation": {
+        "requirements": "تأكد من استيفاء المتطلبات التالية:",
+        "name_required": "الاسم مطلوب",
+        "name_length": "يجب أن يكون الاسم بين 3 و 20 حرفًا",
+
+        "email_required": "البريد الإلكتروني مطلوب",
+        "email_invalid": "يجب إدخال بريد إلكتروني صالح",
+
+        "password_required": "كلمة المرور مطلوبة",
+        "password_length": "يجب أن تكون كلمة المرور بين 6 و 20 حرفًا",
+
+        "confirm_required": "تأكيد كلمة المرور مطلوب",
+        "password_mismatch": "يجب أن تتطابق كلمتا المرور",
+
+        "phone_required": "رقم الهاتف مطلوب",
+        "phone_invalid": "يجب أن يكون رقم هاتف مصري صحيح"
+      }
+    }
+  },
+  "brands": {
+    "title": "الماركات",
+    "viewProducts": "عرض المنتجات"
+  },
+  "categories": {
+    "title": "الأقسام",
+    "viewProducts": "عرض المنتجات"
+  },
+  "product": {
+    "reviews": "التقييمات",
+    "price": "السعر",
+    "add_to_cart": "أضف إلى السلة"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "language": {
+      "title": "اللغة",
+      "arabic": "العربية",
+      "english": "الإنجليزية"
+    },
+    "appearance": {
+      "title": "المظهر",
+      "dark_mode": "الوضع الداكن"
+    }
+  },
+  "not_found": {
+    "code": "404",
+    "title": "الصفحة غير موجودة",
+    "description": "عذرًا، لا يمكننا العثور على الصفحة التي تبحث عنها. ربما تم نقلها أو حذفها.",
+    "home": "العودة إلى الصفحة الرئيسية",
+    "previous": "الصفحة السابقة",
+    "lost": "هل ضللت الطريق؟",
+    "contact_support": "تواصل مع فريق الدعم"
+  },
+
+  "wishlist": {
+    "title": "قائمة المفضلة",
+    "items": "منتجات",
+    "empty_title": "فارغة!",
+    "empty_message": "قائمة المفضلة فارغة حالياً.",
+    "start_shopping": "ابدأ التسوق",
+    "add_to_cart": "أضف إلى السلة",
+    "remove": "إزالة من المفضلة",
+    "brand": "العلامة التجارية"
+  },
+  "showPassword": "عرض و اخفاء كلمة المرور"
+}

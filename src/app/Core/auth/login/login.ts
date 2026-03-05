@@ -5,9 +5,10 @@ import { toast } from 'ngx-sonner';
 import { Auth } from '../../Services/Auth/auth';
 import { HlmToasterImports } from '@spartan-ng/helm/sonner';
 import { CookieService } from 'ngx-cookie-service';
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-login',
-  imports: [RouterLink, ReactiveFormsModule, HlmToasterImports],
+  imports: [RouterLink, ReactiveFormsModule, HlmToasterImports, TranslatePipe],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })

@@ -11,10 +11,11 @@ import { WishListService } from '../../Core/Services/Wishlist/wish-list';
 import { isPlatformBrowser } from '@angular/common';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, InfiniteScrollDirective, CarouselModule],
+  imports: [RouterLink, InfiniteScrollDirective, CarouselModule, TranslatePipe],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -95,6 +96,7 @@ export class Home implements OnInit {
     this.getProducts();
   }
   customOptions: OwlOptions = {
+    rtl: true,
     loop: true,
     mouseDrag: true,
     touchDrag: true,

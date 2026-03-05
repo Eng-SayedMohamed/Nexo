@@ -37,6 +37,8 @@
     "@ng-icons/lucide": ">=32.0.0 <34.0.0",
     "@ngx-loading-bar/core": "^7.0.1",
     "@ngx-loading-bar/http-client": "^7.0.1",
+    "@ngx-translate/core": "^17.0.0",
+    "@ngx-translate/http-loader": "^17.0.0",
     "@primeuix/themes": "^2.0.3",
     "@spartan-ng/brain": "^0.0.1-alpha.629",
     "class-variance-authority": "^0.7.0",

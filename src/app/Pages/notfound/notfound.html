@@ -2,12 +2,14 @@
   class="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center px-6 py-24 sm:py-32 lg:px-8"
 >
   <div class="text-center">
-    <p class="text-base font-semibold text-indigo-600 dark:text-indigo-400">404</p>
+    <p class="text-base font-semibold text-indigo-600 dark:text-indigo-400">
+      {{ 'notfound.code' | translate }}
+    </p>
     <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
-      Page not found
+      {{ 'notfound.title' | translate }}
     </h1>
     <p class="mt-6 text-base leading-7 text-gray-600 dark:text-gray-400">
-      Sorry, we couldn’t find the page you’re looking for. It might have been moved or deleted.
+      {{ 'notfound.description' | translate }}
     </p>
 
     <div class="mt-10 flex items-center justify-center">
@@ -27,22 +29,22 @@
         routerLink="/home"
         class="rounded-md bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all transform hover:scale-105"
       >
-        Go back home
+        {{ 'notfound.home' | translate }}
       </a>
       <button
         (click)="goBack()"
         class="text-sm font-semibold text-gray-900 dark:text-gray-200 hover:text-indigo-600 transition-colors"
       >
-        Previous page <span aria-hidden="true">&rarr;</span>
+        {{ 'notfound.previous' | translate }}
       </button>
     </div>
 
     <div class="mt-16 border-t border-gray-100 dark:border-gray-800 pt-8">
       <p class="text-sm text-gray-500">
-        Lost?
-        <a href="/support" class="font-medium text-indigo-600 hover:text-indigo-500"
-          >Contact our support team</a
-        >
+        {{ 'notfound.lost' | translate }}
+        <a href="/support" class="font-medium text-indigo-600 hover:text-indigo-500">{{
+          'notfound.contact_support' | translate
+        }}</a>
       </p>
     </div>
   </div>

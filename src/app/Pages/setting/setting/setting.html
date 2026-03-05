@@ -1,11 +1,15 @@
 <div class="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
   <div class="max-w-md mx-auto p-6">
     <!-- Title -->
-    <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Settings</h1>
+    <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">
+      {{ 'settings.title' | translate }}
+    </h1>
 
     <!-- Language Section -->
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-5 mb-6 transition">
-      <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">🌍 Language</h2>
+      <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">
+        🌍 {{ 'settings.language.title' | translate }}
+      </h2>
 
       <div class="flex gap-4">
         <button
@@ -17,7 +21,7 @@
           "
           class="px-4 py-2 rounded-xl transition"
         >
-          العربية
+          {{ 'settings.language.arabic' | translate }}
         </button>
 
         <button
@@ -29,24 +33,30 @@
           "
           class="px-4 py-2 rounded-xl transition"
         >
-          English
+          {{ 'settings.language.english' | translate }}
         </button>
       </div>
     </div>
 
     <!-- Theme Section -->
     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow p-5 transition">
-      <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">🎨 Appearance</h2>
+      <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">
+        🎨 {{ 'settings.appearance.title' | translate }}
+      </h2>
 
       <div class="flex items-center justify-between">
-        <span class="text-gray-600 dark:text-gray-300"> Dark Mode </span>
+        <span class="text-gray-600 dark:text-gray-300">
+          {{ 'settings.appearance.dark_mode' | translate }}
+        </span>
 
         <button
           (click)="toggleTheme()"
           class="w-14 h-8 flex items-center bg-gray-300 dark:bg-blue-600 rounded-full p-1 transition"
         >
           <div
-            [class]="isDark ? 'translate-x-6 bg-white' : 'translate-x-0 bg-white'"
+            [class]="
+              isDark ? 'translate-x-6 rtl:-translate-x-6 bg-white' : 'translate-x-0 bg-white'
+            "
             class="w-6 h-6 rounded-full shadow-md transform transition"
           ></div>
         </button>

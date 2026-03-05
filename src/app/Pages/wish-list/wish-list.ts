@@ -3,10 +3,11 @@ import { WishListService } from '../../Core/Services/Wishlist/wish-list';
 import { CartS } from '../../Core/Services/Cart/cart-s';
 import { toast } from 'ngx-sonner';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-wish-list',
-  imports: [RouterLink],
+  imports: [RouterLink, TranslatePipe],
   templateUrl: './wish-list.html',
   styleUrl: './wish-list.css',
 })

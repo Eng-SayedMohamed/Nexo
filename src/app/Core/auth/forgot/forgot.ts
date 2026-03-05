@@ -5,9 +5,10 @@ import { HlmToasterImports } from '@spartan-ng/helm/sonner';
 import { toast } from 'ngx-sonner';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-forgot',
-  imports: [ReactiveFormsModule, HlmToasterImports],
+  imports: [ReactiveFormsModule, HlmToasterImports, TranslatePipe],
   templateUrl: './forgot.html',
   styleUrl: './forgot.css',
 })

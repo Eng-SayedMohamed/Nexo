@@ -1,3 +1,4 @@
+import { MyTranslate } from './Core/Services/my-translate';
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { initFlowbite } from 'flowbite';
@@ -12,7 +13,10 @@ import { HlmToasterImports } from '@spartan-ng/helm/sonner';
 })
 export class App implements OnInit {
   protected readonly title = signal('Store');
-  constructor(private flowbiteService: FlowbiteService) {}
+  constructor(
+    private flowbiteService: FlowbiteService,
+    MyTranslate: MyTranslate,
+  ) {}
 
   ngOnInit(): void {
     this.flowbiteService.loadFlowbite((flowbite) => {

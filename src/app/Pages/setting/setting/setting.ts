@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
+import { MyTranslate } from '../../../Core/Services/my-translate';
 
 @Component({
   selector: 'app-setting',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './setting.html',
   styleUrl: './setting.css',
 })
 export class Setting implements OnInit {
+  private readonly myTranslate = inject(MyTranslate);
   currentLang = 'en';
   isDark = false;
 
@@ -26,7 +29,7 @@ export class Setting implements OnInit {
 
   changeLanguage(lang: string) {
     this.currentLang = lang;
-    localStorage.setItem('lang', lang);
+    this.myTranslate.changeLang(lang);
   }
 
   toggleTheme() {

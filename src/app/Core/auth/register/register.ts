@@ -12,9 +12,10 @@ import { toast } from 'ngx-sonner';
 import { HlmToasterImports } from '@spartan-ng/helm/sonner';
 import { validators } from 'tailwind-merge';
 import { Auth } from '../../Services/Auth/auth';
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-register',
-  imports: [RouterLink, ReactiveFormsModule, HlmToasterImports],
+  imports: [RouterLink, ReactiveFormsModule, HlmToasterImports, TranslatePipe],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })

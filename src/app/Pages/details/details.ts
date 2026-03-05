@@ -5,10 +5,11 @@ import { ISpecProduct } from '../../Shared/interfaces/ispec-product';
 import { CartS } from '../../Core/Services/Cart/cart-s';
 import { toast } from 'ngx-sonner';
 import { WishListService } from '../../Core/Services/Wishlist/wish-list';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-details',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './details.html',
   styleUrl: './details.css',
 })

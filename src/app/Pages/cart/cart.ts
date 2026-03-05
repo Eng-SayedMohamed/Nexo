@@ -3,10 +3,11 @@ import { CartS } from '../../Core/Services/Cart/cart-s';
 import { ICart, Product2 } from '../../Shared/interfaces/icart';
 import { CurrencyPipe, isPlatformBrowser } from '@angular/common';
 import { toast } from 'ngx-sonner';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './cart.html',
   styleUrl: './cart.css',
 })

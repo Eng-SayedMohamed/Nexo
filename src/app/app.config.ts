@@ -14,6 +14,9 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { CookieService } from 'ngx-cookie-service';
 import { headersInterceptor } from './Core/Interceptors/headers-interceptor';
+import { provideTranslateService, provideTranslateLoader } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -32,6 +35,14 @@ export const appConfig: ApplicationConfig = {
           darkModeSelector: '.dark',
         },
       },
+    }),
+    provideTranslateService({
+      loader: provideTranslateHttpLoader({
+        prefix: 'i18n/',
+        suffix: '.json',
+      }),
+      // fallbackLang: 'en',
+      // lang: 'en',
     }),
   ],
 };

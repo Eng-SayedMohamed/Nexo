@@ -1,0 +1,152 @@
+{
+  "app": {
+    "name": "Nexo Store"
+  },
+  "nav": {
+    "categories": "Categories",
+    "brands": "Brands",
+    "wishlist": "Wishlist",
+    "cart": "Cart",
+    "login": "Login",
+    "register": "Register",
+    "settings": "Settings",
+    "sign_out": "Sign out"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "remove_all": "Remove All",
+    "empty_message": "You have no products in your shopping cart to display.",
+    "brand": "Brand",
+    "remove": "Remove",
+    "order_summary": "Order Summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "free": "Free",
+    "total": "Total",
+    "checkout": "Proceed to Checkout"
+  },
+  "home": {
+    "categories": "Categories",
+    "popular_products": "Popular Products",
+    "add_to_cart": "Add to cart",
+    "out_of": "out of"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in to our platform",
+      "email": {
+        "label": "Your email",
+        "placeholder": "example@company.com",
+        "required": "Email is required"
+      },
+      "password": {
+        "label": "Your password",
+        "placeholder": "•••••••••",
+        "required": "Password is required"
+      },
+      "validation": {
+        "title": "Ensure that these requirements are met:"
+      },
+      "remember": "Remember me",
+      "forgot_password": "Lost Password?",
+      "submit": "Sign in to your account",
+      "not_registered": "Not registered?",
+      "create_account": "Create account"
+    },
+    "reset_password": {
+      "steps": {
+        "email": {
+          "title": "Email",
+          "verify": "Verify"
+        },
+        "code": {
+          "title": "Code",
+          "verify": "Verify"
+        },
+        "new_password": "Set New Password"
+      },
+      "form": {
+        "email": "Email",
+        "reset_code": "Reset Code",
+        "new_password": "New Password"
+      },
+      "buttons": {
+        "submit": "Submit"
+      }
+    },
+    "register": {
+      "title": "Sign up to our platform",
+      "name": "Your Name",
+      "email": "Your email",
+      "password": "Your password",
+      "confirm_password": "Confirm password",
+      "phone": "Phone",
+      "submit": "Sign up new account",
+      "have_account": "Do you have Account?",
+      "login": "Login",
+
+      "validation": {
+        "requirements": "Ensure that these requirements are met:",
+        "name_required": "Name is required",
+        "name_length": "Name must be between 3 and 20 characters",
+
+        "email_required": "Email is required",
+        "email_invalid": "Email must be a valid email address",
+
+        "password_required": "Password is required",
+        "password_length": "Password must be between 6 and 20 characters",
+
+        "confirm_required": "Confirm password is required",
+        "password_mismatch": "Passwords must match",
+
+        "phone_required": "Phone is required",
+        "phone_invalid": "Phone must be an Egyptian phone number"
+      }
+    }
+  },
+  "brands": {
+    "title": "Brands",
+    "viewProducts": "View Products"
+  },
+  "categories": {
+    "title": "Categories",
+    "viewProducts": "View Products"
+  },
+  "product": {
+    "reviews": "Reviews",
+    "price": "Price",
+    "add_to_cart": "Add to Cart"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": {
+      "title": "Language",
+      "arabic": "Arabic",
+      "english": "English"
+    },
+    "appearance": {
+      "title": "Appearance",
+      "dark_mode": "Dark Mode"
+    }
+  },
+  "not_found": {
+    "code": "404",
+    "title": "Page not found",
+    "description": "Sorry, we couldn’t find the page you’re looking for. It might have been moved or deleted.",
+    "home": "Go back home",
+    "previous": "Previous page",
+    "lost": "Lost?",
+    "contact_support": "Contact our support team"
+  },
+  "wishlist": {
+    "title": "My Wishlist",
+    "items": "Items",
+    "empty_title": "Empty!",
+    "empty_message": "Your wishlist is currently empty.",
+    "start_shopping": "Start Shopping",
+    "add_to_cart": "Add to Cart",
+    "remove": "Remove from Wishlist",
+    "brand": "Brand"
+  },
+  "showPassword": "Show & Hide Password"
+}

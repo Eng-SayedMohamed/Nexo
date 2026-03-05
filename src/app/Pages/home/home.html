@@ -1,6 +1,6 @@
 <!-- carousel -->
 <div class="hidden sm:block mb-10">
-  <h3 class="text-2xl font-bold text-heading mb-4">Categories</h3>
+  <h3 class="text-2xl font-bold text-heading mb-4">{{ 'home.categories' | translate }}</h3>
   <owl-carousel-o [options]="customOptions">
     @for (item of categories(); track $index) {
       <ng-template carouselSlide
@@ -14,8 +14,8 @@
   </owl-carousel-o>
 </div>
 <!-- Static Products -->
-<h3 class="text-3xl font-bold text-heading mb-4">Popular Products</h3>
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-9">
+<h3 class="text-3xl font-bold text-heading mb-4">{{ 'home.popular_products' | translate }}</h3>
+<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-9">
   @for (item of Products(); track $index) {
     <div
       class="w-full max-w-sm bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs relative group"
@@ -83,7 +83,7 @@
           <span
             class="bg-brand-softer border border-brand-subtle text-fg-brand-strong text-xs font-medium px-1.5 py-0.5 rounded-sm"
           >
-            {{ item.ratingsAverage }} out of 5
+            {{ item.ratingsAverage }} {{ 'home.out_of' | translate }} 5
           </span>
         </div>
 
@@ -91,16 +91,16 @@
           <h5
             class="text-xl text-heading font-semibold tracking-tight hover:text-brand transition-colors"
           >
-            {{ item.title.split(' ').slice(0, 3).join(' ') }}
+            {{ item.title.split(' ').slice(0, 2).join(' ') }}
           </h5>
         </a>
 
         <div class="flex items-center justify-between mt-6">
-          <span class="text-3xl font-extrabold text-heading">${{ item.price }}</span>
+          <span class="lg:text-3xl text-[1rem] font-extrabold text-heading">${{ item.price }}</span>
           <button
             (click)="addToCart(item._id)"
             type="button"
-            class="inline-flex items-center text-white bg-brand hover:bg-brand-strong border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium rounded-base text-sm px-3 py-2 transition-all"
+            class="inline-flex items-center text-white bg-brand hover:bg-brand-strong border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium rounded-base text-sm px-1 lg:px-3 py-2 transition-all"
           >
             <svg
               class="w-4 h-4 me-1.5"
@@ -113,7 +113,7 @@
                 d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"
               />
             </svg>
-            Add to cart
+            {{ 'home.add_to_cart' | translate }}
           </button>
         </div>
       </div>

@@ -2,10 +2,11 @@ import { RouterLink } from '@angular/router';
 import { BrandsService } from './../../Core/Services/Brands/brands';
 import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { IBrand } from '../../Shared/interfaces/ibrand';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-brands',
-  imports: [RouterLink],
+  imports: [RouterLink, TranslatePipe],
   templateUrl: './brands.html',
   styleUrl: './brands.css',
 })

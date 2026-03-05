@@ -1,3 +1,4 @@
+<h2 class="text-3xl font-bold text-heading mb-6">{{ 'brands.title' | translate }}</h2>
 <div class="grid sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
   @for (item of BrandsData(); track $index) {
     <div
@@ -15,7 +16,7 @@
         [routerLink]="['/products', item._id]"
         class="inline-flex items-center text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
       >
-        Read more
+        {{ 'brands.viewProducts' | translate }}
         <svg
           class="w-4 h-4 ms-1.5 rtl:rotate-180 -me-0.5"
           aria-hidden="true"

@@ -19,10 +19,11 @@ import { IUserInfo } from '../../interfaces/iuser-info';
 import { CookieService } from 'ngx-cookie-service';
 import { WishListService } from '../../../Core/Services/Wishlist/wish-list';
 import { CartS } from '../../../Core/Services/Cart/cart-s';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, TranslatePipe],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
