@@ -25,7 +25,6 @@ export class Cart implements OnInit {
   showCart() {
     this.cartS.showCart().subscribe({
       next: (res) => {
-        console.log(res);
         this.cartDetails.set(res.data);
       },
     });

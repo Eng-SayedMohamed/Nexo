@@ -34,7 +34,6 @@ export class SpecProducts implements OnInit {
   getCategories() {
     this.product.getProductsOfCategories(this.id()).subscribe({
       next: (res) => {
-        console.log(res);
         this.categoryProducts.set(res.data);
       },
     });
@@ -49,7 +48,7 @@ export class SpecProducts implements OnInit {
   addToCart(id: string) {
     this.cartS.addToCart(id).subscribe({
       next: (res) => {
-        console.log(res);
+        this.cartS.counter.set(res.numOfCartItems);
         if (res.status == 'success') {
           toast.success('Added successful!', {
             description: res.message,

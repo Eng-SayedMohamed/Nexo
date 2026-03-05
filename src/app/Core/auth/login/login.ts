@@ -29,7 +29,6 @@ export class Login {
       this.auth.signIn(this.logIn.value).subscribe({
         next: (res) => {
           this.isLoading = false;
-          console.log(res);
           if (res.message === 'success') {
             this.cookieService.set('token', res.token);
             toast.success('Login successful!', {
@@ -44,7 +43,6 @@ export class Login {
         },
         error: (err) => {
           this.isLoading = false;
-          console.log(err);
           toast.error('Login failed!', {
             description: err.error.message,
             duration: 3000,
@@ -53,6 +51,5 @@ export class Login {
         },
       });
     }
-    console.log(this.logIn.value);
   }
 }

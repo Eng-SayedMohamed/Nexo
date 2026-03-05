@@ -54,7 +54,6 @@ export class Register {
             this.router.navigate(['/login']);
           }, 1000);
           this.isLoading = false;
-          console.log(res);
           if (res.message === 'success') {
             toast.success('Registration successful!', {
               description: 'You have successfully registered.',
@@ -65,7 +64,6 @@ export class Register {
         },
         error: (err) => {
           this.isLoading = false;
-          console.log(err);
           toast.error('Registration failed!', {
             description: err.error.message,
             duration: 3000,

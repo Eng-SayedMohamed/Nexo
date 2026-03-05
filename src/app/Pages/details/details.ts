@@ -32,7 +32,6 @@ export class Details implements OnInit {
   getRouteId() {
     this.route.paramMap.subscribe({
       next: (params) => {
-        console.log(params.get('id'));
         this.id.set(params.get('id') || '');
       },
     });
@@ -47,7 +46,7 @@ export class Details implements OnInit {
   addToCart(id: string) {
     this.cartS.addToCart(id).subscribe({
       next: (res) => {
-        console.log(res);
+        this.cartS.counter.set(res.numOfCartItems);
         if (res.status == 'success') {
           toast.success('Added successful!', {
             description: res.message,

@@ -22,7 +22,6 @@ export class Order implements OnInit {
     if (isPlatformBrowser(this.id)) {
       this.info = jwtDecode(this.cookies.get('token'));
       this.orders.getUserOrders(this.info.id).subscribe((res) => {
-        console.log(res);
         this.order.set(res);
       });
     }

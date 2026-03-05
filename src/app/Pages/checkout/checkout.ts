@@ -35,7 +35,6 @@ export class Checkout implements OnInit {
         this.cartId.set(res.get('id')!);
       },
     });
-    console.log(this.cartId());
   }
   cash(): void {
     this.orders.cashOrder(this.cartId(), this.checkout.value).subscribe((res) => {
