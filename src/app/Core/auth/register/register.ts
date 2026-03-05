@@ -35,7 +35,7 @@ export class Register {
       password: new FormControl(null, [
         Validators.required,
         Validators.minLength(6),
-        Validators.pattern(/^[\w!@#$%^&*A-Z]{6,}$/),
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/),
       ]),
       rePassword: new FormControl(null, [Validators.required]),
       phone: new FormControl(null, [
