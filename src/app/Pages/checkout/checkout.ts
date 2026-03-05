@@ -43,7 +43,7 @@ export class Checkout implements OnInit {
         description: 'Your order has been placed successfully and will be delivered to you soon.',
       });
       setTimeout(() => {
-        this.router.navigate(['/allorder']);
+        this.router.navigate(['/allorders']);
       }, 1000);
     });
   }
