@@ -21,6 +21,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { WishListService } from '../../../Core/Services/Wishlist/wish-list';
 import { CartS } from '../../../Core/Services/Cart/cart-s';
 import { TranslatePipe } from '@ngx-translate/core';
+import { MyTranslate } from '../../../Core/Services/my-translate';
 
 @Component({
   selector: 'app-navbar',
@@ -35,6 +36,7 @@ export class Navbar implements OnInit {
   private readonly router = inject(Router);
   private readonly cookieService = inject(CookieService);
   private readonly renderer2 = inject(Renderer2);
+  private readonly myTranslate = inject(MyTranslate);
   readonly cartS = inject(CartS);
   Userinfo: WritableSignal<IUserInfo> = signal({} as IUserInfo);
   cartCounter: Signal<number> = computed(() => this.cartS.counter());
@@ -73,5 +75,12 @@ export class Navbar implements OnInit {
   signOut() {
     this.cookieService.delete('token');
     this.router.navigate(['/login']);
+  }
+  changeLanguage(evt: any) {
+    if (evt.target.checked == true) {
+      this.myTranslate.changeLang('ar');
+    } else {
+      this.myTranslate.changeLang('en');
+    }
   }
 }
