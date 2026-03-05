@@ -3,7 +3,7 @@ import {
   importProvidersFrom,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
-import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
@@ -14,17 +14,12 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { CookieService } from 'ngx-cookie-service';
 import { headersInterceptor } from './Core/Interceptors/headers-interceptor';
-import { provideTranslateService, provideTranslateLoader } from '@ngx-translate/core';
+import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
-
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(
-      routes,
-      withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
-      withViewTransitions(),
-    ),
+    provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'top' })),
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch(), withInterceptors([headersInterceptor])),
     importProvidersFrom(LoadingBarHttpClientModule, LoadingBarModule, CookieService),
@@ -41,8 +36,9 @@ export const appConfig: ApplicationConfig = {
         prefix: 'i18n/',
         suffix: '.json',
       }),
-      // fallbackLang: 'en',
-      // lang: 'en',
+      fallbackLang: 'en',
+      // lang: lang,
+      // defaultLanguage: 'en',
     }),
   ],
 };

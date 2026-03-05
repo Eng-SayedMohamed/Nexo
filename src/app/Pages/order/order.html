@@ -1,0 +1,175 @@
+<div
+  class="w-full mx-auto p-6 bg-gray-50 dark:bg-slate-950 min-h-screen transition-colors duration-300"
+>
+  <h2
+    class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8 border-b border-gray-200 dark:border-slate-800 pb-4"
+  >
+    Order History
+  </h2>
+
+  <div class="space-y-8">
+    @for (order of order(); track $index) {
+      <div
+        class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-gray-100 dark:border-slate-800 overflow-hidden hover:shadow-md transition-all"
+      >
+        <div
+          class="bg-gray-50 dark:bg-slate-800/50 p-4 sm:px-6 flex flex-wrap justify-between items-center gap-4 border-b border-gray-100 dark:border-slate-800"
+        >
+          <div class="flex gap-8">
+            <div>
+              <p
+                class="text-xs text-gray-500 dark:text-gray-400 uppercase font-semibold tracking-wider"
+              >
+                Order ID
+              </p>
+              <p class="text-sm font-bold text-blue-600 dark:text-blue-400">#{{ order.id }}</p>
+            </div>
+            <div>
+              <p
+                class="text-xs text-gray-500 dark:text-gray-400 uppercase font-semibold tracking-wider"
+              >
+                Date Placed
+              </p>
+              <p class="text-sm text-gray-700 dark:text-gray-300">
+                {{ order.createdAt | date: 'shortDate' }}
+              </p>
+            </div>
+            <div>
+              <p
+                class="text-xs text-gray-500 dark:text-gray-400 uppercase font-semibold tracking-wider"
+              >
+                Total Amount
+              </p>
+              <p class="text-sm font-bold text-gray-900 dark:text-white">
+                {{ order.totalOrderPrice | currency: 'EGP ' }}
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-2">
+            <span
+              [class]="
+                order.isPaid
+                  ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+                  : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
+              "
+              class="px-3 py-1 rounded-full text-xs font-bold uppercase transition-colors"
+            >
+              {{ order.isPaid ? 'Paid' : 'Unpaid' }}
+            </span>
+            <span
+              [class]="
+                order.isDelivered
+                  ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
+                  : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400'
+              "
+              class="px-3 py-1 rounded-full text-xs font-bold uppercase transition-colors"
+            >
+              {{ order.isDelivered ? 'Delivered' : 'Processing' }}
+            </span>
+          </div>
+        </div>
+
+        <div class="p-6">
+          <div class="divide-y divide-gray-100 dark:divide-slate-800">
+            @for (item of order.cartItems; track $index) {
+              <div class="py-4 flex items-center gap-4 first:pt-0 last:pb-0">
+                <img
+                  [src]="item.product.imageCover"
+                  [alt]="item.product.title"
+                  class="w-20 h-20 object-cover rounded-lg border border-gray-100 dark:border-slate-700 shadow-sm"
+                />
+
+                <div class="flex-1">
+                  <h4 class="text-sm font-bold text-gray-800 dark:text-gray-200">
+                    {{ item.product.title }}
+                  </h4>
+                  <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    Brand:
+                    <span class="text-gray-700 dark:text-gray-300 font-medium">{{
+                      item.product.brand.name
+                    }}</span>
+                  </p>
+                  <div class="flex items-center gap-1 mt-2">
+                    <span class="text-yellow-400 text-sm">★</span>
+                    <span class="text-xs font-medium text-gray-600 dark:text-gray-400">{{
+                      item.product.ratingsAverage
+                    }}</span>
+                  </div>
+                </div>
+
+                <div class="text-right">
+                  <p class="text-sm font-semibold text-gray-900 dark:text-white">
+                    {{ item.price | currency: 'EGP ' }}
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400 font-medium italic">
+                    Qty: {{ item.count }}
+                  </p>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+
+        <div
+          class="bg-gray-50/50 dark:bg-slate-800/30 p-4 sm:px-6 flex flex-col md:flex-row justify-between border-t border-gray-100 dark:border-slate-800 gap-4"
+        >
+          <div class="flex gap-3">
+            <div
+              class="p-2 bg-white dark:bg-slate-700 rounded-lg shadow-sm self-start transition-colors"
+            >
+              <svg
+                class="w-5 h-5 text-gray-400 dark:text-gray-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+            </div>
+            <div>
+              <p
+                class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-tight"
+              >
+                Shipping Address
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-300 font-medium">
+                {{ order.shippingAddress.city }} - {{ order.shippingAddress.details }}
+              </p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">
+                Contact: {{ order.shippingAddress.phone }}
+              </p>
+            </div>
+          </div>
+
+          <div class="md:text-right">
+            <p class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase">
+              Payment Method
+            </p>
+            <div class="flex md:justify-end items-center gap-2">
+              <span class="text-sm font-medium text-gray-700 dark:text-gray-300 capitalize">
+                {{ order.paymentMethodType }}
+              </span>
+              @if (order.paymentMethodType === 'card') {
+                <span class="text-blue-600 dark:text-blue-400">💳</span>
+              } @else if (order.paymentMethodType === 'cash') {
+                <span class="text-green-600 dark:text-green-400">💵</span>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
