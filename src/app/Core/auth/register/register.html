@@ -176,6 +176,12 @@
               ) {
                 <li>{{ 'auth.register.validation.password_length' | translate }}</li>
               }
+              @if (register.get('password')?.hasError('pattern')) {
+                <li>{{ 'auth.register.validation.password_pattern.special_char' | translate }}</li>
+                <li>
+                  {{ 'auth.register.validation.password_pattern.start_with_letter' | translate }}
+                </li>
+              }
             </ul>
           </div>
         </div>

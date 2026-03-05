@@ -100,7 +100,11 @@
         "password_mismatch": "Passwords must match",
 
         "phone_required": "Phone is required",
-        "phone_invalid": "Phone must be an Egyptian phone number"
+        "phone_invalid": "Phone must be an Egyptian phone number",
+        "password_pattern": {
+          "special_char": "Password must contain at least one special character",
+          "start_with_letter": "Password must start with a letter Capital or small"
+        }
       }
     }
   },

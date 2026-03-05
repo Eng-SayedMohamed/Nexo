@@ -101,65 +101,69 @@
         "password_mismatch": "يجب أن تتطابق كلمتا المرور",
 
         "phone_required": "رقم الهاتف مطلوب",
-        "phone_invalid": "يجب أن يكون رقم هاتف مصري صحيح"
+        "phone_invalid": "يجب أن يكون رقم هاتف مصري صحيح",
+        "password_pattern": {
+          "special_char": "يجب أن تحتوي كلمة المرور على حرف خاص واحد على الأقل",
+          "start_with_letter": "يجب أن تبدأ كلمة المرور بحرف كبير أو صغير"
+        }
       }
-    }
-  },
-  "brands": {
-    "title": "الماركات",
-    "viewProducts": "عرض المنتجات"
-  },
-  "categories": {
-    "title": "الأقسام",
-    "viewProducts": "عرض المنتجات"
-  },
-  "product": {
-    "reviews": "التقييمات",
-    "price": "السعر",
-    "add_to_cart": "أضف إلى السلة"
-  },
-  "settings": {
-    "title": "الإعدادات",
-    "language": {
-      "title": "اللغة",
-      "arabic": "العربية",
-      "english": "الإنجليزية"
     },
-    "appearance": {
-      "title": "المظهر",
-      "dark_mode": "الوضع الداكن"
-    }
-  },
-  "not_found": {
-    "code": "404",
-    "title": "الصفحة غير موجودة",
-    "description": "عذرًا، لا يمكننا العثور على الصفحة التي تبحث عنها. ربما تم نقلها أو حذفها.",
-    "home": "العودة إلى الصفحة الرئيسية",
-    "previous": "الصفحة السابقة",
-    "lost": "هل ضللت الطريق؟",
-    "contact_support": "تواصل مع فريق الدعم"
-  },
+    "brands": {
+      "title": "الماركات",
+      "viewProducts": "عرض المنتجات"
+    },
+    "categories": {
+      "title": "الأقسام",
+      "viewProducts": "عرض المنتجات"
+    },
+    "product": {
+      "reviews": "التقييمات",
+      "price": "السعر",
+      "add_to_cart": "أضف إلى السلة"
+    },
+    "settings": {
+      "title": "الإعدادات",
+      "language": {
+        "title": "اللغة",
+        "arabic": "العربية",
+        "english": "الإنجليزية"
+      },
+      "appearance": {
+        "title": "المظهر",
+        "dark_mode": "الوضع الداكن"
+      }
+    },
+    "not_found": {
+      "code": "404",
+      "title": "الصفحة غير موجودة",
+      "description": "عذرًا، لا يمكننا العثور على الصفحة التي تبحث عنها. ربما تم نقلها أو حذفها.",
+      "home": "العودة إلى الصفحة الرئيسية",
+      "previous": "الصفحة السابقة",
+      "lost": "هل ضللت الطريق؟",
+      "contact_support": "تواصل مع فريق الدعم"
+    },
 
-  "wishlist": {
-    "title": "قائمة المفضلة",
-    "items": "منتجات",
-    "empty_title": "فارغة!",
-    "empty_message": "قائمة المفضلة فارغة حالياً.",
-    "start_shopping": "ابدأ التسوق",
-    "add_to_cart": "أضف إلى السلة",
-    "remove": "إزالة من المفضلة",
-    "brand": "العلامة التجارية"
-  },
-  "checkout": {
-    "title": "البيانات الأساسية",
-    "lbl_details": "التفاصيل",
-    "ph_details": "أدخل اسمك أو العنوان",
-    "lbl_phone": "الهاتف",
-    "ph_phone": "01xxxxxxxxx",
-    "lbl_city": "المدينة",
-    "ph_city": "أدخل المدينة",
-    "bt_cash": "دفع كاش",
-    "bt_visa": "دفع فيزا"
-  },
-  "showPassword": "عرض و اخفاء كلمة المرور"
+    "wishlist": {
+      "title": "قائمة المفضلة",
+      "items": "منتجات",
+      "empty_title": "فارغة!",
+      "empty_message": "قائمة المفضلة فارغة حالياً.",
+      "start_shopping": "ابدأ التسوق",
+      "add_to_cart": "أضف إلى السلة",
+      "remove": "إزالة من المفضلة",
+      "brand": "العلامة التجارية"
+    },
+    "checkout": {
+      "title": "البيانات الأساسية",
+      "lbl_details": "التفاصيل",
+      "ph_details": "أدخل اسمك أو العنوان",
+      "lbl_phone": "الهاتف",
+      "ph_phone": "01xxxxxxxxx",
+      "lbl_city": "المدينة",
+      "ph_city": "أدخل المدينة",
+      "bt_cash": "دفع كاش",
+      "bt_visa": "دفع فيزا"
+    },
+    "showPassword": "عرض و اخفاء كلمة المرور"
+  }
 }
