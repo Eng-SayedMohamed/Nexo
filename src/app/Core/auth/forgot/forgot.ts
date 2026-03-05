@@ -81,7 +81,7 @@ export class Forgot {
       this.auth.resetPassword(this.resetPassword.value).subscribe({
         next: (res) => {
           console.log(res);
-          if (res.status === 'Success') {
+          if (res.status === 'success') {
             this.cookieService.set('token', res.token);
             toast.success(res.message, {
               description: 'Password reset successful. Redirecting to Home Page.',
