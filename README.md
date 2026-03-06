@@ -1,59 +1,59 @@
-# Store
+# 🛒 Nexo - E-Commerce Web Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.5.
+Nexo is a simple **E-Commerce web application** built as part of my learning journey in web development.
+The project focuses on creating a clean and user-friendly online shopping experience while practicing core front-end development concepts.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Features
 
-```bash
-ng serve
-```
+* 🛍 **Product Listing** – Display products in an organized layout
+* 🔎 **Product Details Page** – View detailed information about each product
+* 🛒 **Shopping Cart** – Add and remove products from the cart
+* 📱 **Responsive Design** – Works smoothly on desktop and mobile devices
+* ⚡ **Fast Navigation** – Smooth user interaction between pages
+* 🎨 **Clean UI** – Simple and modern interface for better user experience
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🛠 Technologies Used
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+* **HTML5** – Structure of the application
+* **CSS3** – Styling and layout
+* **JavaScript (ES6)** – Application logic and interactivity
+* **Bootstrap** – Responsive design and UI components
+* **Font Awesome** – Icons and visual elements
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-```bash
-ng generate --help
-```
+## 🎯 Learning Goals
 
-## Building
+This project helped me practice:
 
-To build the project run:
+* Building structured web pages
+* Creating responsive layouts
+* Working with JavaScript for interactivity
+* Understanding how basic **E-commerce platforms** function
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 📸 Preview
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/16c9880f-8a22-4617-972c-34ba8b504218" />
 
-## Running unit tests
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
+## 🔗 Repository
 
-For end-to-end (e2e) testing, run:
+Project Link:
+https://github.com/Eng-SayedMohamed/Nexo
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 👨‍💻 Author
 
-## Additional Resources
+**Sayed Mohamed**
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+If you have any feedback or suggestions, feel free to connect with me.
