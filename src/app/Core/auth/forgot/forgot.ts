@@ -81,18 +81,15 @@ export class Forgot {
       this.auth.resetPassword(this.resetPassword.value).subscribe({
         next: (res) => {
           console.log(res);
-          if (res.status === 'success') {
-            this.cookieService.set('token', res.token);
-            toast.success(res.message, {
-              description: 'Password reset successful. Redirecting to Home Page.',
-            });
-            setTimeout(() => {
-              this.Router.navigate(['/home']);
-            }, 1000);
-          }
+          this.Router.navigate(['/home']);
+          this.cookieService.set('token', res.token);
+          toast.success(res.message, {
+            description: 'Password reset successful. Redirecting to Home Page.',
+          });
         },
         error: (err) => {
           console.log(err);
+          this.step.set(1);
           toast.error(err.error.message, {
             description: 'Please try again.',
           });
